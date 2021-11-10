@@ -12,7 +12,7 @@ class AuthController
         // if (Auth::isLogged()) {
             // header('Location: /');
         // }
-        echo Renderer::render('user/login.php');
+        echo Renderer::render('/login.php');
     }
 
     public function displaySignup()
@@ -20,7 +20,7 @@ class AuthController
         // if (Auth::isLogged()) {
         //     header('Location: /');
         // }
-        echo Renderer::render('/user/signup.php');
+        echo Renderer::render('/signup.php');
     }
 
     // public function displayPanel()

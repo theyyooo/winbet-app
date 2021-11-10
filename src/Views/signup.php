@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Inscription</h1>
+    <?php require_once "header.php"; ?>
     <div class="login-form">
         <form action="">
             <h1>Inscription</h1>

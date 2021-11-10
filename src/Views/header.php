@@ -4,7 +4,7 @@
         <nav>
             <ul class="nav__wrapper">
                 <li class="nav__item"><a class="connexion" href="/user/login">Connexion</a></li>
-                <li class="nav__item"><a class="inscription" href="/user/sign-up">Inscription</a></li>
+                <li class="nav__item"><a class="inscription" href="/user/signup">Inscription</a></li>
             </ul>
         </nav>
     </div>

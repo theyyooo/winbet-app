@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Login</h1>
+    <?php require_once "header.php"; ?>
     <div class="login-form">
         <form action="">
             <h1>Connexion</h1>
