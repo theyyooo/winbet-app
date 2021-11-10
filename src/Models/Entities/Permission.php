@@ -1,5 +1,3 @@
-es (7 sloc)  135 Bytes
-  
 <?php
 
 class Permission{
