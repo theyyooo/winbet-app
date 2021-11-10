@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Bijour</h1>
+
+    <?php
+        require_once "header.php";  
+    ?>
+
 </body>
 </html>
+
+<style>
+    *{margin:0;}
+</style>
