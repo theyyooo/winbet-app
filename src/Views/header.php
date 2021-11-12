@@ -12,8 +12,8 @@
 
 <style>
     .brand {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         margin-left: 10vw;
         height: 35px;
     }
@@ -44,10 +44,10 @@
     .connexion{
         background-color: #FBCD27;
         margin-right: 2rem;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 50px;
-        padding-left: 50px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 25px;
+        padding-left: 25px;
         border-radius: 5px;
         text-decoration: none;
         color: black;
@@ -55,10 +55,10 @@
 
     .inscription{
         background-color: white;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 50px;
-        padding-left: 50px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 25px;
+        padding-left: 25px;
         margin-right:25vw;
         border-radius: 5px;
         text-decoration: none;
