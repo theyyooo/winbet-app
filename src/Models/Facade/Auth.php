@@ -11,7 +11,7 @@ class Auth
      */
     public static function isLogged()
     {
-        return isset($_SESSION['user_Id']) ? true : false;
+        return isset($_SESSION['user_id']) ? true : false;
     }
 
     //vérifie si il a la permission
@@ -34,10 +34,17 @@ class Auth
      * @param User $user
      * @return void
      */
-    public static function addUser($user)
+    public static function addUser($newUser)
     {
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
-        $DAOUser->save($user);
+        $user = $DAOUser->findByLogin($newUser->getEmail());
+        if(!$user){
+            $DAOUser->save($newUser);
+        } 
+        else{
+            header('Location: /user/signup');
+            exit;
+        }
         //$user = $DAOUser->findByLogin($user->getEmail());
         //$DAOUser->saveDefaultUserRole($user);
     }
@@ -56,16 +63,16 @@ class Auth
         // echo $password;
         //var_dump($user);
         // echo $user->password;
-        if ($user->password == $password) {
+        if ($user->getPassword() == $password) {
             //$roles = $DAOUser->findRolesFromUser($user);
             $permissions = 0;
             // foreach ($roles as $role) {
             //     $permissions += $role->getPermissions();
             // }
             // echo $user->User_Id;
-            $_SESSION['user_Id'] = $user->user_Id;
-            $_SESSION['user_Firstname'] = $user->firstname;
-            $_SESSION['user_Permissions'] = $permissions;
+            $_SESSION['user_id'] = $user->getId();
+            $_SESSION['user_firstname'] = $user->getFirstname();
+            $_SESSION['user_permissions'] = $permissions;
             header('Location: /');
             exit;
         } else {
