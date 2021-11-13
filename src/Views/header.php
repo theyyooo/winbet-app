@@ -1,11 +1,29 @@
+<?php
+require_once '../src/Models/Facade/Auth.php';
+?>
+
 <header class="site-header">
     <div class="site-header__wrapper">
         <a href="/"><img class="brand" src="/assets/WINBET.svg"></a>
         <nav>
-            <ul class="nav__wrapper">
-                <li class="nav__item"><a class="connexion" href="/user/login">Connexion</a></li>
-                <li class="nav__item"><a class="inscription" href="/user/signup">Inscription</a></li>
-            </ul>
+            <?php
+            if (Auth::isLogged()) {
+            ?>
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a class="connexion" href="/user/dashboard"> <?= $_SESSION['user_Firstname'] ?></a></li>
+                    <li class="nav__item"><a class="inscription" href="/user/logout">Deconnexion</a></li>
+                </ul>
+            <?php
+            } else {
+            ?>
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a class="connexion" href="/user/login">Connexion</a></li>
+                    <li class="nav__item"><a class="inscription" href="/user/signup">Inscription</a></li>
+                </ul>
+            <?php
+            }
+
+            ?>
         </nav>
     </div>
 </header>
@@ -41,7 +59,7 @@
         display: none;
     }
 
-    .connexion{
+    .connexion {
         background-color: #FBCD27;
         margin-right: 2rem;
         padding-top: 5px;
@@ -53,13 +71,13 @@
         color: black;
     }
 
-    .inscription{
+    .inscription {
         background-color: white;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-right: 25px;
         padding-left: 25px;
-        margin-right:25vw;
+        margin-right: 25vw;
         border-radius: 5px;
         text-decoration: none;
         color: black;
