@@ -12,10 +12,6 @@ require_once '../src/Controllers/SportController.php';
 // require_once '../src/Controllers/CountryController.php';
 require_once '../src/Controllers/AuthController.php';
 
-
-session_start();
-
-
 /**
  * Controllers imports
  */
