@@ -6,7 +6,7 @@ require_once '../src/Models/DAO/DAOSport.php';
 class SportController
 {
 
-    public function display()
+    public static function display()
     {
         $DAOSport = new DAOSport(Singleton::getInstance()->cnx);
         $sports = $DAOSport->findAll();

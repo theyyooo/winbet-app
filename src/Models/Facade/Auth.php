@@ -9,7 +9,7 @@ class Auth
      *
      * @return boolean
      */
-    public function isLogged()
+    public static function isLogged()
     {
         return isset($_SESSION['user_Id']) ? true : false;
     }
@@ -21,7 +21,7 @@ class Auth
      * @param $p
      * @return boolean
      */
-    public function hasPermission($p)
+    public static function hasPermission($p)
     {
         $permissions = (isset($_SESSION['user_Permissions'])) ? $_SESSION['user_Permissions'] : null ;
         return $p & $permissions;
@@ -34,33 +34,37 @@ class Auth
      * @param User $user
      * @return void
      */
-    public function addUser($user)
+    public static function addUser($user)
     {
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
         $DAOUser->save($user);
-        $user = $DAOUser->findByLogin($user->getLogin());
-        $DAOUser->saveDefaultUserRole($user);
+        //$user = $DAOUser->findByLogin($user->getEmail());
+        //$DAOUser->saveDefaultUserRole($user);
     }
 
     /**
      * Connecte l'user
      *
-     * @param string $login
+     * @param string $email
      * @param string $password
      * @return void
      */
-    public function logUser($login, $password)
+    public static function logUser($email, $password)
     {
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
-        $user = $DAOUser->findByLogin($login);
-        if ($user->getPassword() == $password) {
-            $roles = $DAOUser->findRolesFromUser($user);
+        $user = $DAOUser->findByLogin($email);
+        // echo $password;
+        //var_dump($user);
+        // echo $user->password;
+        if ($user->password == $password) {
+            //$roles = $DAOUser->findRolesFromUser($user);
             $permissions = 0;
-            foreach ($roles as $role) {
-                $permissions += $role->getPermissions();
-            }
-            $_SESSION['user_Id'] = $user->getUser_Id();
-            $_SESSION['user_Name'] = $user->getName();
+            // foreach ($roles as $role) {
+            //     $permissions += $role->getPermissions();
+            // }
+            // echo $user->User_Id;
+            $_SESSION['user_Id'] = $user->user_Id;
+            $_SESSION['user_Firstname'] = $user->firstname;
             $_SESSION['user_Permissions'] = $permissions;
             header('Location: /');
             exit;
@@ -74,7 +78,7 @@ class Auth
      *
      * @return void
      */
-    public function logout()
+    public static function logout()
     {
         session_destroy();
         header('Location: /');

@@ -11,23 +11,25 @@
 <body>
     <?php require_once "header.php"; ?>
     <div class="login-form">
-        <form action="">
+        <form action="/user/signup" method="post">
             <h1>Inscription</h1>
             <div>
                 <label>Prénom :</label>
-                <input required type="text">
+                <input name='firstname' required type="text">
             </div>
             <div>
                 <label>Nom :</label>
-                <input required type="text">
+                <input name='lastname' required type="text">
             </div>
             <div>
                 <label>Adresse mail :</label>
-                <input required type="text">
+                <input name='email' required type="text">
             </div>
-            <label>Mot de passe :</label>
-            <input required type="password">
-            <Button type="submit" class="btn-form" type="submit">Connexion</Button>
+            <div>
+                <label>Mot de passe :</label>
+                <input name='password' required type="password">
+            </div>
+            <Button type="submit" class="btn-form" type="submit">Inscription</Button>
             <span>Déjà inscrit ? <a href="/user/login">Connectez-vous !</a></span>
         </form>
     </div>
@@ -66,7 +68,7 @@
         display: block;
         margin-bottom: 15px;
         margin-top: 5px;
-        width: 100%;
+        width: 94%;
         outline: none;
     }
     .btn-form{

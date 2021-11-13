@@ -48,15 +48,12 @@ CREATE TABLE matches(
 );
 
 CREATE TABLE users(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    password VARCHAR(100) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    phone VARCHAR(100) NOT NULL,
-    city VARCHAR(100) NOT NULL,
-    zip VARCHAR(100) NOT NULL,
-    balance int NOT NULL,
-    freebets INT NOT NULL
+    password VARCHAR(255) NOT NULL,
+    balance int NOT NULL
 );
 
 CREATE TABLE bets(

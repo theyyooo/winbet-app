@@ -20,7 +20,7 @@ class DAOUser
      */
     public function find($id): User
     {
-        $SQL = "SELECT * FROM user WHERE User_Id = :id";
+        $SQL = "SELECT * FROM users WHERE User_Id = :id";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("id", $id);
         $preparedStatement->execute();
@@ -35,7 +35,7 @@ class DAOUser
      */
     public function remove(User $user): void
     {
-        $SQL = "DELETE FROM user WHERE User_Id = :id";
+        $SQL = "DELETE FROM users WHERE User_Id = :id";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("id", $user->getUser_Id());
         $preparedStatement->execute();
@@ -48,11 +48,14 @@ class DAOUser
      */
     public function save(User $user): void
     {
-        $SQL = "INSERT INTO user (Name, Login, Password) VALUES (:Name, :Login, :Password)";
+        // var_dump($user);
+        $SQL = "INSERT INTO users (firstname, lastname, email, password, balance) VALUES (:firstname, :lastname, :email, :password, :balance)";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue("Name", $user->getName());
-        $preparedStatement->bindValue("Login", $user->getLogin());
-        $preparedStatement->bindValue("Password", $user->getPassword());
+        $preparedStatement->bindValue("firstname", $user->getFirstname());
+        $preparedStatement->bindValue("lastname", $user->getLastname());
+        $preparedStatement->bindValue("email", $user->getEmail());
+        $preparedStatement->bindValue("password", $user->getPassword());
+        $preparedStatement->bindValue("balance", $user->getBalance());
         $preparedStatement->execute();
     }
 
@@ -80,8 +83,9 @@ class DAOUser
         $SQL = "UPDATE user SET User_Id = :User_Id, Name = :Name, Login = :Login, Password = :Password WHERE User_Id = :User_Id";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("User_Id", $user->getUser_Id());
-        $preparedStatement->bindValue("Name", $user->getName());
-        $preparedStatement->bindValue("Login", $user->getLogin());
+        $preparedStatement->bindValue("Firstname", $user->getFirstname());
+        $preparedStatement->bindValue("Lastname", $user->getLastname());
+        $preparedStatement->bindValue("Email", $user->getEmail());
         $preparedStatement->bindValue("Password", $user->getPassword());
         $preparedStatement->execute();
     }
@@ -93,7 +97,7 @@ class DAOUser
     public function findAll(): array
     {
         $users = [];
-        $SQL = "SELECT * FROM user";
+        $SQL = "SELECT * FROM users";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->execute();
         while ($user = $preparedStatement->fetchObject("User")) {
@@ -117,14 +121,14 @@ class DAOUser
 
     /**
      * Récupère le user qui a ce login
-     * @param String $login
+     * @param String $email
      * @return User
      */
-    public function findByLogin(string $login): User
+    public function findByLogin(string $email): User
     {
-        $SQL = "SELECT * FROM user WHERE Login = :login";
+        $SQL = "SELECT * FROM users WHERE email = :email";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue("login", $login);
+        $preparedStatement->bindValue("email", $email);
         $preparedStatement->execute();
         $user = $preparedStatement->fetchObject("User");
         return $user;

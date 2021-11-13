@@ -7,19 +7,19 @@ require_once '../src/Models/Entities/User.php';
 class AuthController
 {
 
-    public function displayLogin()
+    public static function displayLogin()
     {
-        // if (Auth::isLogged()) {
-            // header('Location: /');
-        // }
+        if (Auth::isLogged()) {
+            header('Location: /');
+        }
         echo Renderer::render('/login.php');
     }
 
-    public function displaySignup()
+    public static function displaySignup()
     {
-        // if (Auth::isLogged()) {
-        //     header('Location: /');
-        // }
+        if (Auth::isLogged()) {
+            header('Location: /');
+        }
         echo Renderer::render('/signup.php');
     }
 
@@ -31,33 +31,35 @@ class AuthController
     //     echo Renderer::render('/user/panel.php');
     // }
 
-    // public function actionLogin()
-    // {
-    //     if (Auth::isLogged()) {
-    //         header('Location: /');
-    //     }
-    //     $login = htmlspecialchars($_POST['login']);
-    //     $password = htmlspecialchars($_POST['password']);
-    //     $password = hash('sha512', $password);
-    //     Auth::logUser($login, $password);
-    // }
+    public static function actionLogin()
+    {
+        if (Auth::isLogged()) {
+            header('Location: /');
+        }
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        $password = hash('sha512', $password);
+        Auth::logUser($email, $password);
+    }
 
-    // public function actionSignup()
-    // {
-    //     if (Auth::isLogged()) {
-    //         header('Location: /');
-    //     }
-    //     $user = new User();
-    //     $user->setName(htmlspecialchars($_POST['name']));
-    //     $user->setLogin(htmlspecialchars($_POST['login']));
-    //     $user->setPassword(htmlspecialchars($_POST['password']));
-    //     Auth::addUser($user);
-    //     header('Location: /user/login');
-    // }
+    public static function actionSignup()
+    {
+        if (Auth::isLogged()) {
+            header('Location: /');
+        }
+        $user = new User();
+        $user->setFirstname(htmlspecialchars($_POST['firstname']));
+        $user->setLastname(htmlspecialchars($_POST['lastname']));
+        $user->setEmail(htmlspecialchars($_POST['email']));
+        $user->setPassword(htmlspecialchars($_POST['password']));
+        $user->setBalance(200);
+        Auth::addUser($user);
+        header('Location: /user/login');
+    }
 
-    // public function actionLogout()
-    // {
-    //     Auth::logout();
-    //     header('Location: /');
-    // }
+    public function actionLogout()
+    {
+        Auth::logout();
+        header('Location: /');
+    }
 }
