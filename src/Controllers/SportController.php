@@ -13,10 +13,9 @@ class SportController
         $sports = $DAOSport->findAll();
 
         $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
-        $results = $api->getAllNextMatch();
-
+        $results = $api->getAllNextMatch("2015");
         $data = compact('sports', 'results');
-        var_dump($data);
+        
         echo Renderer::render('sports.php', $data);
     }
 
