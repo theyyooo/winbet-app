@@ -37,7 +37,7 @@ class DAOUser
     {
         $SQL = "DELETE FROM users WHERE User_Id = :id";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue("id", $user->getUser_Id());
+        $preparedStatement->bindValue("id", $user->getId());
         $preparedStatement->execute();
     }
 
@@ -68,7 +68,7 @@ class DAOUser
     {
         $SQL = "INSERT INTO user_role (User_Id, Role_Id) VALUES (:User_Id, :Role_Id)";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue("User_Id", $user->getUser_Id());
+        $preparedStatement->bindValue("User_Id", $user->getId());
         $preparedStatement->bindValue("Role_Id", 1);
         $preparedStatement->execute();
     }
@@ -82,7 +82,7 @@ class DAOUser
     {
         $SQL = "UPDATE user SET User_Id = :User_Id, Name = :Name, Login = :Login, Password = :Password WHERE User_Id = :User_Id";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue("User_Id", $user->getUser_Id());
+        $preparedStatement->bindValue("User_Id", $user->getId());
         $preparedStatement->bindValue("Firstname", $user->getFirstname());
         $preparedStatement->bindValue("Lastname", $user->getLastname());
         $preparedStatement->bindValue("Email", $user->getEmail());
@@ -122,9 +122,9 @@ class DAOUser
     /**
      * Récupère le user qui a ce login
      * @param String $email
-     * @return User
+     * @return User|bool
      */
-    public function findByLogin(string $email): User
+    public function findByLogin(string $email)
     {
         $SQL = "SELECT * FROM users WHERE email = :email";
         $preparedStatement = $this->cnx->prepare($SQL);
@@ -144,7 +144,7 @@ class DAOUser
         $roles = [];
         $SQL = "SELECT user_role.Role_Id, role.Role_Name, role.Permissions FROM role, user_role WHERE user_role.User_Id = :id AND role.Role_Id = user_role.Role_Id";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue("id", $user->getUser_Id());
+        $preparedStatement->bindValue("id", $user->getId());
         $preparedStatement->execute();
         while ($role = $preparedStatement->fetchObject("Role")) {
             $roles[] = $role;
