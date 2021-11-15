@@ -29,6 +29,21 @@ class DAOUser
     }
 
     /**
+     * Renvoie un user à partir de son id
+     * @param int $id
+     * @return int
+     */
+    public function findUserBalance($id)
+    {
+        $SQL = "SELECT balance FROM users WHERE id = :id";
+        $preparedStatement = $this->cnx->prepare($SQL);
+        $preparedStatement->bindValue("id", $id);
+        $preparedStatement->execute();
+        $result = $preparedStatement->fetchColumn();
+        return $result;
+    }
+
+    /**
      * Supprime les données d'un user par son id
      * @param User $user
      * @return Void

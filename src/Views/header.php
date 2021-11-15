@@ -11,7 +11,7 @@ require_once '../src/Models/Facade/Auth.php';
             ?>
                 <div class="user-data">
                     <p class="firstname"> <?= $_SESSION['user_firstname'] ?></p>
-                    <div class="balance">100 $</div>
+                    <div class="balance"><?= $data['balance'] ?> €</div>
                 </div>
                 <ul class="nav__wrapper">
                     <li class="nav__item"><a class="bets" href="/user/dashboard"><img src="/assets/bets.svg"></a></li>
