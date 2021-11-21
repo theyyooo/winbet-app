@@ -52,7 +52,17 @@
                         </div>
                         <div style="height: 50%;">
                             <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
-                            <div></div>
+                            <div>
+                                <?php if (date("Y-m-d") === substr($match->getDate(), 0,10)){
+                                        echo "Aujourd'hui";
+                                        }
+                                      else if (date("Y-m-d", strtotime(date("Y-m-d") . ' + 1 days')) === substr($match->getDate(), 0,10)){
+                                        echo "Demain";
+                                      }
+                                      else{
+                                        echo substr($match->getDate(), 0,10) ;
+                                      }                                 
+                                ?> - <?=substr($match->getDate(), 11,5)?></div>
                             <div style="height:65%;display: flex; margin-top:20px;font-size:10px;justify-content:space-between">
                                 <div style="width:30% ;display:grid;">
                                     <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>

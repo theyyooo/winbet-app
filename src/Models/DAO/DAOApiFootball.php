@@ -45,7 +45,7 @@ class ApiFootball
         }
         $compteur = 0;
         foreach ($data["matches"] as $match) {
-            if ($match['odds']['homeWin'] != null && $match['odds']['awayWin'] != null) {
+            if ($match['odds']['homeWin'] != null && $match['odds']['awayWin'] != null && $match["status"] == "SCHEDULED") {
                 $theMatch = new Maatch();
                 $theMatch->setId($match["id"]);
                 $theMatch->setStatus($match["status"]);
