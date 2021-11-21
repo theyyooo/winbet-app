@@ -16,7 +16,7 @@ class SportController
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
 
         $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
-        $results = $api->getAllNextMatch("");
+        $results = $api->getAllNextMatch("2015");
         if (is_null($results)){
             $error = "Erreur lors du chargement de l'API FOOTBALL";
             $data = compact('sports', 'error', 'balance');
