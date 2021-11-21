@@ -114,5 +114,6 @@ require_once '../src/Models/Facade/Auth.php';
     }
     .user-data{
         display: flex;
+        align-items: center;
     }
 </style>

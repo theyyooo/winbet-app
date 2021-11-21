@@ -8,9 +8,16 @@
     <title>Document</title>
 </head>
 
-<body style="background-color: #f5f6f8;">
+<body style="background-color: #f5f6f8; margin:0">
 
-    <?php require_once "header.php"; ?>
+    <?php require_once "header.php"; 
+
+    if (isset($error)){
+        echo "<div style='background-color:red; width:50%;margin-left:25%;text-align:center;margin-top:15px;padding-top:5px;padding-bottom:5px; border-radius: 10px;'>".$error."</div>";
+    }
+    
+    ?>
+
 
     <div style="width: 80%; height:100vh; display:flex; margin:auto; margin-top:20px">
         <div style="width:20%; height:100%">
@@ -18,19 +25,53 @@
                 <div style="text-align: center; margin-bottom: 25px;">
                     <b>Liste des sports</b>
                 </div>
-                
+
                 <?php
-                    foreach ($data['sports'] as $value) {  
-                        echo '<div class="divSport"><img height="20px" class="imgSport" src="'.$value->img.'">';
-                        echo '<a class="linkSport" href="/'. $value->label . '"><span>'. $value->label . '</span></a></div>';
-                    }
+                foreach ($data['sports'] as $value) {
+                    echo '<div class="divSport">
+                                <img height="20px" class="imgSport" src="' . $value->img . '">';
+                                echo '<a class="linkSport" href="/' . $value->label . '"><span>' . $value->label . '</span></a>
+                    </div>';
+                }
                 ?>
 
             </div>
         </div>
         <div style="width: 80%; height:100%; padding-left:20px">
             <div style="width: 100%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:10px">
-                <h1 style="font-size: 15px;">Matchs Live</h1>
+                <h1 style="font-size: 15px;">Prochains matches</h1>
+            </div>
+            <div style="width: 100%; display:flex;flex-wrap: wrap; margin-top:20px;text-align:center;justify-content:center">
+                <?php
+                foreach ($data['results'] as $match) {
+                ?>
+                    <div style="width: 40%; height:300px; background-color:white;border-radius:8px; margin-right:20px;margin-left:20px;margin-top:10px;margin-bottom:10px">
+                        <div style="height: 50%; display:flex">
+                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;;width:50%;background-image: url('<?=($match->getHomeTeam())->getCrestUrl()?>');"></div>
+                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;;width:50%;background-image: url('<?=($match->getAwayTeam())->getCrestUrl()?>');"></div>
+                        </div>
+                        <div style="height: 50%;">
+                            <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
+                            <div></div>
+                            <div style="height:65%;display: flex; margin-top:20px;font-size:10px;justify-content:space-between">
+                                <div style="width:30% ;display:grid;">
+                                    <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>
+                                    <div style="height: 50%"><button class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
+                                </div>
+                                <div style="width:30% ;display:grid">
+                                    <div style="height: 50%;margin:auto">MATCH NUL</div>
+                                    <div style="height: 50%;"><button class="betButton"><?= ($match->getOdds())->getDraw() ?></button></div>
+                                </div>
+                                <div style="width:30% ;display:grid">
+                                    <div style="height: 50%;margin:auto"><?= ($match->getAwayTeam())->getName() ?></div>
+                                    <div style="height: 50%;"><button class="betButton"><?= ($match->getOdds())->getAwayWin() ?></button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -39,24 +80,28 @@
 </html>
 
 <style>
-    * {
-        margin: 0;
-    }
-
     span {
         display: block;
         padding: 15px;
-        border-bottom : #FBCD27 solid 1px;
+        border-bottom: #FBCD27 solid 1px;
         text-align: center;
         font-size: 20px;
     }
 
-    .linkSport{
+    .linkSport {
         text-decoration: none;
         color: black;
     }
-    .divSport{
+
+    .divSport {
         display: flex;
-        vertical-align: auto;
+        align-items: center;
+    }
+    .betButton{
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: #FBCD27;
     }
 </style>
