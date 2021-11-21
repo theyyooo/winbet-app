@@ -1,16 +1,6 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
 session_start();
-
-/**
- * Controllers imports
- */
-require_once '../src/Controllers/SportController.php';
-// require_once '../src/Controllers/CityController.php';
-// require_once '../src/Controllers/CountryController.php';
-require_once '../src/Controllers/AuthController.php';
 
 /**
  * Controllers imports
@@ -50,7 +40,7 @@ require_once '../src/Controllers/AuthController.php';
 
     switch ($control) {
         case '': {
-                call_user_func_array(["SportController", "display"], $fragments);
+                call_user_func_array(["SportController", "display"], $fragments); 
                 break;
             }
         case "city": {
@@ -79,7 +69,7 @@ require_once '../src/Controllers/AuthController.php';
     {
 
         $action = array_shift($fragments);
-
+        
         switch ($action) {
             case "details": {
                     call_user_func_array(["CityController", "display"], $fragments);

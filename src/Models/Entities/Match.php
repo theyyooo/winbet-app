@@ -1,6 +1,7 @@
 <?php
 
 include_once 'Team.php';
+include_once 'Odds.php';
 
 class Maatch{
 
@@ -11,6 +12,7 @@ class Maatch{
     private $competition;
     private $score;
     private $utcDate;
+    private $odds;
 
     public function getId() {
         return $this->id;
@@ -72,6 +74,15 @@ class Maatch{
 
 	public function setScore($score){
 		$this->score = $score;
+        return $this;
+	}
+
+    public function getOdds(){
+		return $this->odds;
+	}
+
+	public function setOdds($odds){
+		$this->odds = $odds;
         return $this;
 	}
 }

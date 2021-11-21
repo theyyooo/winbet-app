@@ -2,6 +2,7 @@
 class Team{
     private $id;
     private $name;
+    private $crestUrl;
 
     public function getId(){
         return $this->id;
@@ -18,6 +19,15 @@ class Team{
 
     public function setName($name){
         $this->name = $name;
+        return $this;
+    }
+
+    public function getCrestUrl(){
+        return $this->crestUrl;
+    }
+
+    public function setCrestUrl($crestUrl){
+        $this->crestUrl = $crestUrl;
         return $this;
     }
 }
