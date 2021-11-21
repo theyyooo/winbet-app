@@ -28,8 +28,10 @@
 
                 <?php
                 foreach ($data['sports'] as $value) {
-                    echo '<div class="divSport"><img height="20px" class="imgSport" src="' . $value->img . '">';
-                    echo '<a class="linkSport" href="/' . $value->label . '"><span>' . $value->label . '</span></a></div>';
+                    echo '<div class="divSport">
+                                <img height="20px" class="imgSport" src="' . $value->img . '">';
+                                echo '<a class="linkSport" href="/' . $value->label . '"><span>' . $value->label . '</span></a>
+                    </div>';
                 }
                 ?>
 
@@ -93,7 +95,7 @@
 
     .divSport {
         display: flex;
-        vertical-align: auto;
+        align-items: center;
     }
     .betButton{
         padding-top: 6px;
