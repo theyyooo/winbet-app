@@ -180,7 +180,7 @@ CREATE TABLE `sports` (
 
 LOCK TABLES `sports` WRITE;
 /*!40000 ALTER TABLE `sports` DISABLE KEYS */;
-INSERT INTO `sports` VALUES (1,'FOOTBALL','https://cdn.icon-icons.com/icons2/390/PNG/512/soccer-ball_39433.png'),(2,'VOLLEYBALL','https://image.flaticon.com/icons/png/512/22/22555.png'),(3,'RUGBY','https://dbdzm869oupei.cloudfront.net/img/sticker/preview/2625.png'),(4,'TENNIS','https://cdn-icons-png.flaticon.com/512/8/8270.png'),(5,'GOLF','https://cdn-icons-png.flaticon.com/512/39/39675.png');
+INSERT INTO `sports` VALUES (1,'FOOTBALL','http://simpleicon.com/wp-content/uploads/football.png'),(2,'VOLLEYBALL','https://image.flaticon.com/icons/png/512/22/22555.png'),(3,'RUGBY','https://dbdzm869oupei.cloudfront.net/img/sticker/preview/2625.png'),(4,'TENNIS','https://cdn-icons-png.flaticon.com/512/8/8270.png'),(5,'GOLF','https://cdn-icons-png.flaticon.com/512/39/39675.png');
 /*!40000 ALTER TABLE `sports` ENABLE KEYS */;
 UNLOCK TABLES;
 

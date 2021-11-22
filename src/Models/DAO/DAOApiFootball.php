@@ -19,7 +19,6 @@ class ApiFootball
         curl_setopt_array($curl, [
             CURLOPT_HTTPHEADER       => array("X-Auth-Token: " . $this->apiKey . ""),
             CURLOPT_RETURNTRANSFER   => true,
-            CURLOPT_TIMEOUT          => 10,
         ]);
         $data = curl_exec($curl);
 
@@ -33,7 +32,7 @@ class ApiFootball
     public function getAllNextMatch($idCompetition): ?array
     {
         if (empty($idCompetition)) {
-            $curl = curl_init("http://api.football-data.org/v2/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 9 days')) . "");
+            $curl = curl_init("http://api.football-data.org/v2/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 2 days')) . "");
         } else {
             $curl = curl_init("http://api.football-data.org/v2/competitions/" . $idCompetition . "/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 9 days')) . "");
         }
