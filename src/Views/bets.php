@@ -19,24 +19,7 @@
     ?>
 
     <div style="width: 80%; height:100vh; display:flex; margin:auto; margin-top:20px">
-        <div style="width:20%; height:100%">
-            <div style="background-color: #fff;border-radius: 5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:20px">
-                <div style="text-align: center; margin-bottom: 25px;">
-                    <b>Liste des sports</b>
-                </div>
-
-                <?php
-                foreach ($data['sports'] as $value) {
-                    echo '<div class="divSport">
-                                <img height="20px" class="imgSport" src="' . $value->img . '">';
-                    echo '<a class="linkSport" href="/' . $value->label . '"><span>' . $value->label . '</span></a>
-                    </div>';
-                }
-                ?>
-
-            </div>
-        </div>
-        <div style="width: 80%; height:100%; padding-left:20px">
+        <div style="width: 100%; height:100%; padding-left:20px">
             <div style="width: 100%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:10px">
                 <h1 style="font-size: 15px;">Prochains matches</h1>
             </div>
@@ -51,17 +34,7 @@
                         </div>
                         <div style="height: 50%;">
                             <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
-                            <div>
-                                <?php if (date("Y-m-d") === substr($match->getDate(), 0,10)){
-                                        echo "Aujourd'hui";
-                                        }
-                                      else if (date("Y-m-d", strtotime(date("Y-m-d") . ' + 1 days')) === substr($match->getDate(), 0,10)){
-                                        echo "Demain";
-                                      }
-                                      else{
-                                        echo substr($match->getDate(), 0,10) ;
-                                      }                                 
-                                ?> - <?=substr($match->getDate(), 11,5)?></div>
+                            <div></div>
                             <div style="height:65%;display: flex; margin-top:20px;font-size:10px;justify-content:space-between">
                                 <div style="width:30% ;display:grid;">
                                     <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>

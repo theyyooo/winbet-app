@@ -23,13 +23,13 @@ class AuthController
         echo Renderer::render('/signup.php');
     }
 
-    // public function displayPanel()
-    // {
-    //     if (!Auth::isLogged()) {
-    //         header('Location: /');
-    //     }
-    //     echo Renderer::render('/user/panel.php');
-    // }
+    public function displayBets()
+    {
+        if (!Auth::isLogged()) {
+            header('Location: /');
+        }
+        echo Renderer::render('/bets.php');
+    }
 
     public static function actionLogin()
     {
