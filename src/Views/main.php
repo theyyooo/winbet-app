@@ -44,7 +44,7 @@
                 <?php
                 foreach ($data['results'] as $match) {
                 ?>
-                    <div style="width: 40%; height:300px; background-color:white;border-radius:8px; margin-right:20px;margin-left:20px;margin-top:10px;margin-bottom:10px;">
+                    <div style="width: 45%;padding-bottom:20px; height:300px; background-color:white;border-radius:8px; margin-right:20px;margin-left:20px;margin-top:10px;margin-bottom:10px;">
                         <div style="height: 10%;color:grey; display:flex ; justify-content:center; margin-top:10px;"><div style="background-position:center;background-size:contain;background-repeat: no-repeat; width:50px;background-image: url('<?= ($match->getCompetition())->getIcon() ?>')"></div><div style="line-height:2em"><?=($match->getCompetition())->getName()?></div></div>
                         <div style="height: 40%; display:flex">
                             <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;width:50%;background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>');"></div>
@@ -117,5 +117,6 @@
         text-decoration: none;
         color: black;
         border: #FBCD27 solid 1px;
+        margin-bottom: 15px;
     }
 </style>

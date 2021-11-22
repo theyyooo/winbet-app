@@ -18,7 +18,7 @@ class SportController
         $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
         $results = $api->getAllNextMatch("");
         if (is_null($results)){
-            $error = "Erreur lors du chargement de l'API FOOTBALL";
+            $error = "Vous avez effectué trop de requêtes merci de patienter quelques instant";
             $data = compact('sports', 'error', 'balance');
         }else{
             $data = compact('sports', 'results', 'balance');
