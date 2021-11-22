@@ -14,7 +14,7 @@ require_once '../src/Models/Facade/Auth.php';
                     <div class="balance"><?= $data['balance'] ?> €</div>
                 </div>
                 <ul class="nav__wrapper">
-                    <li class="nav__item"><a class="bets" href="/user/dashboard"><img src="/assets/bets.svg"></a></li>
+                    <li class="nav__item"><a class="bets" href="/user/bets"><img src="/assets/bets.svg"></a></li>
                     <li class="nav__item"><a class="deconnexion" href="/user/logout">Deconnexion</a></li>
                 </ul>
             <?php

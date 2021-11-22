@@ -20,6 +20,9 @@ require_once '../src/Controllers/AuthController.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WinBet | Pari sportifs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="/css/bootstrap.css" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 </head>
@@ -173,8 +176,8 @@ require_once '../src/Controllers/AuthController.php';
                     }
                     break;
                 }
-            case "panel": {
-                    call_user_func_array(["AuthController", "displayPanel"], $fragments);
+            case "bets": {
+                    call_user_func_array(["AuthController", "displayBets"], $fragments);
                     break;
                 }
             case "logout": {
@@ -193,3 +196,9 @@ require_once '../src/Controllers/AuthController.php';
 </body>
 
 </html>
+
+<style>
+    html{
+        font-family: 'Open Sans', sans-serif;
+    }
+</style>
