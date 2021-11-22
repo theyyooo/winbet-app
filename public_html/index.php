@@ -46,8 +46,8 @@ require_once '../src/Controllers/AuthController.php';
                 call_user_func_array(["SportController", "display"], $fragments); 
                 break;
             }
-        case "city": {
-                cityRoutes_get($fragments);
+        case "sport": {
+                sportRoutes_get($fragments);
                 break;
             }
         case "country": {
@@ -68,7 +68,7 @@ require_once '../src/Controllers/AuthController.php';
             }
     }
 
-    function cityRoutes_get($fragments)
+    function sportRoutes_get($fragments)
     {
 
         $action = array_shift($fragments);
@@ -79,7 +79,7 @@ require_once '../src/Controllers/AuthController.php';
                     break;
                 }
             case "show": {
-                    call_user_func_array(["CityController", "displayAll"], $fragments);
+                    call_user_func_array(["SportController", "displaySport"], $fragments);
                     break;
                 }
             case "delete": {
