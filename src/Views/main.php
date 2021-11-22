@@ -108,10 +108,6 @@
     }
 
     .betButton {
-        padding-top: 6px;
-        padding-bottom: 6px;
-        padding-left: 15px;
-        padding-right: 15px;
         background-color: #FBCD27;
         padding-top: 5px;
         padding-bottom: 5px;
