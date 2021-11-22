@@ -15,15 +15,15 @@ class SportController
         $sports = $DAOSport->findAll();
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
 
-        // $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
-        // $results = $api->getAllNextMatch("");
-        // if (is_null($results)){
-        //     $error = "Erreur lors du chargement de l'API FOOTBALL";
-        //     $data = compact('sports', 'error', 'balance');
-        // }else{
-        //     $data = compact('sports', 'results', 'balance');
-        // }  
-        $data = compact('sports', 'error', 'balance');
+        $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
+        $results = $api->getAllNextMatch("");
+        if (is_null($results)){
+            $error = "Erreur lors du chargement de l'API FOOTBALL";
+            $data = compact('sports', 'error', 'balance');
+        }else{
+            $data = compact('sports', 'results', 'balance');
+        }  
+        // $data = compact('sports', 'error', 'balance');
         echo Renderer::render('main.php', $data);
     }
 

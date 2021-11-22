@@ -12,19 +12,9 @@
     
     <?php require_once "header.php";
 
-<<<<<<< HEAD:src/Views/sports.php
-    <?php require_once "header.php";
-
     if (isset($error)) {
         echo "<div style='background-color:red; width:50%;margin-left:25%;text-align:center;margin-top:15px;padding-top:5px;padding-bottom:5px; border-radius: 10px;'>" . $error . "</div>";
     }
-=======
-    if (isset($error)) {
-        echo "<div style='background-color:red; width:50%;margin-left:25%;text-align:center;margin-top:15px;padding-top:5px;padding-bottom:5px; border-radius: 10px;'>" . $error . "</div>";
-    }
-
-    ?>
->>>>>>> premiere partie:src/Views/main.php
 
     ?>
 
@@ -39,11 +29,7 @@
                 foreach ($data['sports'] as $value) {
                     echo '<div class="divSport">
                                 <img height="20px" class="imgSport" src="' . $value->img . '">';
-<<<<<<< HEAD:src/Views/sports.php
-                    echo '<a class="linkSport" href="/' . $value->label . '"><span>' . $value->label . '</span></a>
-=======
                     echo '<a class="linkSport" href="/sport/show/' . $value->label . '"><span>' . $value->label . '</span></a>
->>>>>>> premiere partie:src/Views/main.php
                     </div>';
                 }
                 ?>
