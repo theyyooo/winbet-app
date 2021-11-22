@@ -50,15 +50,16 @@ class ApiFootball
                 $theMatch->setStatus($match["status"]);
                 $theMatch->setDate($match["utcDate"]);
                 $theMatch->setHomeTeam((new Team)->setId($match['homeTeam']['id'])
-                        ->setName($match["homeTeam"]["name"])
-                     ->setCrestUrl($this->getTeamInfo($match['homeTeam']['id']))
+                         ->setName($match["homeTeam"]["name"])
+                         ->setCrestUrl($this->getIconTeam($match['homeTeam']['id']))
                 );
                 $theMatch->setAwayTeam((new Team)->setId($match['awayTeam']['id'])
-                        ->setName($match["awayTeam"]["name"])
-                     ->setCrestUrl($this->getTeamInfo($match['awayTeam']['id']))
+                         ->setName($match["awayTeam"]["name"])
+                         ->setCrestUrl($this->getIconTeam($match['awayTeam']['id']))
                 );
                 $theMatch->setCompetition((new Competition)->setId($match['competition']['id'])
                         ->setName($match['competition']['name'])
+                        ->setIcon($this->getIconCompetition($match['competition']['id']))
                 );
                 $theMatch->setOdds((new Odds)->setHomeWin($match['odds']['homeWin'])
                         ->setDraw($match['odds']['draw'])
@@ -75,14 +76,23 @@ class ApiFootball
         return $results;
     }
 
-    public function getTeamInfo($idTeam)
+    public function getIconTeam($idTeam)
     {
 
-        $curl = curl_init("http://api.football-data.org/v2/teams/" . $idTeam . "");
+        $curl = curl_init("http://api.football-data.org/v2/teams/" . $idTeam );
         $data = $this->curlExec($curl);
         if (is_null($data)) {
             return null;
         }
         return $data["crestUrl"];
+    }
+
+    public function getIconCompetition($id){
+        $curl = curl_init("http://api.football-data.org/v2/competitions/" . $id);
+        $data = $this->curlExec($curl);
+        if (is_null($data)) {
+            return null;
+        }
+        return $data["emblemUrl"];
     }
 }
