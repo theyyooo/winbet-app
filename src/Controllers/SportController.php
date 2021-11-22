@@ -18,12 +18,33 @@ class SportController
         $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
         $results = $api->getAllNextMatch("");
         if (is_null($results)){
-            $error = "Erreur lors du chargement de l'API FOOTBALL";
+            $error = "Vous avez effectué trop de requêtes merci de patienter quelques instant";
             $data = compact('sports', 'error', 'balance');
         }else{
             $data = compact('sports', 'results', 'balance');
         }  
-        echo Renderer::render('sports.php', $data);
+        // $data = compact('sports', 'error', 'balance');
+        echo Renderer::render('main.php', $data);
+    }
+
+    public static function displaySport($sportLibelle = null)
+    {
+        $DAOSport = new DAOSport(Singleton::getInstance()->cnx);
+        $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
+        $sports = $DAOSport->findAll();
+        $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
+        echo $sportLibelle;
+
+        // $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
+        // $results = $api->getAllNextMatch("");
+        // if (is_null($results)){
+        //     $error = "Erreur lors du chargement de l'API FOOTBALL";
+        //     $data = compact('sports', 'error', 'balance');
+        // }else{
+        //     $data = compact('sports', 'results', 'balance');
+        // }  
+        $data = compact('sports', 'error', 'balance');
+        echo Renderer::render('main.php', $data);
     }
 
     public function notFound()
