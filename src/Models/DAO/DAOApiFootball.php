@@ -65,7 +65,6 @@ class ApiFootball
                         ->setAwayWin($match['odds']['awayWin'])
                 );
                 if (empty(($theMatch->getCompetition())->getName())) {
-                    echo "je pass";
                     $theMatch->setCompetition((new Competition)->setId($match['competition']['id'])
                                                                ->setName($data['competition']['name'])
                     );
