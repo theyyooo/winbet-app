@@ -8,6 +8,8 @@ require_once '../src/Models/DAO/DAOApiFootball.php';
 class SportController
 {
 
+    private static $token = "ad752d786e584657b7fdb9d7390e978d";
+
     public static function display()
     {
         $DAOSport = new DAOSport(Singleton::getInstance()->cnx);
@@ -15,36 +17,44 @@ class SportController
         $sports = $DAOSport->findAll();
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
 
-        $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
+        $api = new ApiFootball(self::$token);
         $results = $api->getAllNextMatch("");
-        if (is_null($results)){
+        if (is_null($results)) {
             $error = "Vous avez effectué trop de requêtes merci de patienter quelques instant";
             $data = compact('sports', 'error', 'balance');
-        }else{
+        } else {
             $data = compact('sports', 'results', 'balance');
-        }  
-        // $data = compact('sports', 'error', 'balance');
+        }
         echo Renderer::render('main.php', $data);
     }
 
-    public static function displaySport($sportLibelle = null)
+    public static function displaySport($sportLibelle = null, $competition = null)
     {
         $DAOSport = new DAOSport(Singleton::getInstance()->cnx);
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
         $sports = $DAOSport->findAll();
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
-        echo $sportLibelle;
 
-        // $api = new ApiFootball("ad752d786e584657b7fdb9d7390e978d");
-        // $results = $api->getAllNextMatch("");
-        // if (is_null($results)){
-        //     $error = "Erreur lors du chargement de l'API FOOTBALL";
-        //     $data = compact('sports', 'error', 'balance');
-        // }else{
-        //     $data = compact('sports', 'results', 'balance');
-        // }  
-        $data = compact('sports', 'error', 'balance');
-        echo Renderer::render('main.php', $data);
+        if ($sportLibelle === "FOOTBALL") {
+            $api = new ApiFootball(self::$token);
+            if (!is_null($competition)){
+                $results = $api->getAllNextMatch($competition);
+            }  
+            else{
+                $results = $api->getAllNextMatch("");
+            }        
+            if (is_null($results)) {
+                $error = "Vous avez effectué trop de requêtes merci de patienter quelques instant";
+                $data = compact('sports', 'error', 'balance', 'sportLibelle', 'competition');
+            } else {
+                $data = compact('sports', 'results', 'balance', 'sportLibelle', 'competition');
+            }
+        }
+        else{
+            $data = compact('sports', 'balance', 'sportLibelle', 'competition');
+        }
+
+        echo Renderer::render('sport.php', $data);
     }
 
     public function notFound()

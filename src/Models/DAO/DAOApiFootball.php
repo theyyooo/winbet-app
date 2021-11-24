@@ -32,17 +32,17 @@ class ApiFootball
     public function getAllNextMatch($idCompetition): ?array
     {
         if (empty($idCompetition)) {
-            $curl = curl_init("http://api.football-data.org/v2/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 2 days')) . "");
+            $curl = curl_init("http://api.football-data.org/v2/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d") . "");
         } else {
-            $curl = curl_init("http://api.football-data.org/v2/competitions/" . $idCompetition . "/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 9 days')) . "");
+            $curl = curl_init("http://api.football-data.org/v2/competitions/" . $idCompetition . "/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 7 days')) . "");
         }
-
         $data = $this->curlExec($curl);
 
         if (is_null($data)) {
             return null;
         }
         $compteur = 0;
+
         foreach ($data["matches"] as $match) {
             if ($match['odds']['homeWin'] != null && $match['odds']['awayWin'] != null && $match["status"] == "SCHEDULED") {
                 $theMatch = new Maatch();
@@ -50,49 +50,34 @@ class ApiFootball
                 $theMatch->setStatus($match["status"]);
                 $theMatch->setDate($match["utcDate"]);
                 $theMatch->setHomeTeam((new Team)->setId($match['homeTeam']['id'])
-                         ->setName($match["homeTeam"]["name"])
-                         ->setCrestUrl($this->getIconTeam($match['homeTeam']['id']))
+                        ->setName($match["homeTeam"]["name"])
+                        ->setCrestUrl("https://crests.football-data.org/" . $match['homeTeam']['id'] . ".svg")
                 );
                 $theMatch->setAwayTeam((new Team)->setId($match['awayTeam']['id'])
-                         ->setName($match["awayTeam"]["name"])
-                         ->setCrestUrl($this->getIconTeam($match['awayTeam']['id']))
+                        ->setName($match["awayTeam"]["name"])
+                        ->setCrestUrl("https://crests.football-data.org/" . $match['awayTeam']['id'] . ".svg")
                 );
                 $theMatch->setCompetition((new Competition)->setId($match['competition']['id'])
                         ->setName($match['competition']['name'])
-                        ->setIcon($this->getIconCompetition($match['competition']['id']))
                 );
                 $theMatch->setOdds((new Odds)->setHomeWin($match['odds']['homeWin'])
                         ->setDraw($match['odds']['draw'])
                         ->setAwayWin($match['odds']['awayWin'])
                 );
+                if (empty(($theMatch->getCompetition())->getName())) {
+                    echo "je pass";
+                    $theMatch->setCompetition((new Competition)->setId($match['competition']['id'])
+                                                               ->setName($data['competition']['name'])
+                    );
+                }
                 $results[] = $theMatch;
                 $compteur += 1;
-                if ($compteur == 10){
+                if ($compteur == 10) {
                     break;
                 }
             }
         }
         curl_close($curl);
         return $results;
-    }
-
-    public function getIconTeam($idTeam)
-    {
-
-        $curl = curl_init("http://api.football-data.org/v2/teams/" . $idTeam );
-        $data = $this->curlExec($curl);
-        if (is_null($data)) {
-            return null;
-        }
-        return $data["crestUrl"];
-    }
-
-    public function getIconCompetition($id){
-        $curl = curl_init("http://api.football-data.org/v2/competitions/" . $id);
-        $data = $this->curlExec($curl);
-        if (is_null($data)) {
-            return null;
-        }
-        return $data["emblemUrl"];
     }
 }
