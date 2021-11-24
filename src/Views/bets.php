@@ -5,54 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mes paries | WinBet</title>
 </head>
 
 <body style="background-color: #f5f6f8; margin:0">
 
-    <?php require_once "header.php";
-
-    if (isset($error)) {
-        echo "<div style='background-color:red; width:50%;margin-left:25%;text-align:center;margin-top:15px;padding-top:5px;padding-bottom:5px; border-radius: 10px;'>" . $error . "</div>";
-    }
-
-    ?>
+    <?php require_once "header.php"; ?>
 
     <div style="width: 80%; height:100vh; display:flex; margin:auto; margin-top:20px">
-        <div style="width: 100%; height:100%; padding-left:20px">
-            <div style="width: 100%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:10px">
-                <h1 style="font-size: 15px;">Prochains matches</h1>
+        <div style="width: 100%; height:100%;">
+            <div style="width: 100%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px;">
+                <h1 style="font-size: 15px; padding:15px;">Mes paris</h1>
             </div>
-            <div style="width: 100%; display:flex;flex-wrap: wrap; margin-top:20px;text-align:center;justify-content:center">
+            <div style="width: 100%; margin-top:20px;">
                 <?php
-                foreach ($data['results'] as $match) {
+                // var_dump($data);
+                    foreach ($data['bets'] as $bet) {
                 ?>
-                    <div style="width: 40%; height:300px; background-color:white;border-radius:8px; margin-right:20px;margin-left:20px;margin-top:10px;margin-bottom:10px">
-                        <div style="height: 50%; display:flex">
-                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;;width:50%;background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>');"></div>
-                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;;width:50%;background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>');"></div>
-                        </div>
-                        <div style="height: 50%;">
-                            <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
-                            <div></div>
-                            <div style="height:65%;display: flex; margin-top:20px;font-size:10px;justify-content:space-between">
-                                <div style="width:30% ;display:grid;">
-                                    <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>
-                                    <div style="height: 50%"><button class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
-                                </div>
-                                <div style="width:30% ;display:grid">
-                                    <div style="height: 50%;margin:auto">MATCH NUL</div>
-                                    <div style="height: 50%;"><button class="betButton"><?= ($match->getOdds())->getDraw() ?></button></div>
-                                </div>
-                                <div style="width:30% ;display:grid">
-                                    <div style="height: 50%;margin:auto"><?= ($match->getAwayTeam())->getName() ?></div>
-                                    <div style="height: 50%;"><button class="betButton"><?= ($match->getOdds())->getAwayWin() ?></button></div>
-                                </div>
-                            </div>
-                        </div>
+                <div style="background-color: #fff; display:flex; padding:10px; justify-content:space-between; margin-bottom:10px; border-radius:3px;">
+                    <div style="line-height: 2.5em; text-align:center; padding-left:25px;">
+                        <?=$bet['home_team_label']?> <?=$bet['home_team_score']?> - <?=$bet['visitor_team_score']?> <?=$bet['visitor_team_label']?>
                     </div>
+                    <div style="background-color: #FBCD27; border-radius:3px; padding:10px 25px;">
+                        <?=$bet['odds']?>
+                    </div>
+                    <div style="line-height: 2.5em;">
+                        Résultat: En attente
+                    </div>
+                    <div style="line-height: 2.5em;">
+                        Mise: <?=$bet['bet']?>€
+                    </div>
+                    <div style="line-height: 2.5em;">
+                        Gain potentiel: <?=$bet['odds']*$bet['bet']?>€
+                    </div>
+                    <div style="background-color: #bbb; border-radius:3px; padding:10px 35px;">
+                        <?php
+                            if($bet['status'] == 0){
+                                echo 'En attente';
+                            } else if($bet['status'] == 1){
+                                echo 'Perdu';
+                            } else if($bet['status'] == 2){
+                                echo 'Gagné';
+                            }
+                        ?>
+                    </div>
+                </div>
                 <?php
-                }
+                    }
                 ?>
             </div>
         </div>

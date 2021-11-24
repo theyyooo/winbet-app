@@ -3,6 +3,8 @@
 require_once '../src/Renderer.php';
 require_once '../src/Models/Facade/Auth.php';
 require_once '../src/Models/Entities/User.php';
+require_once '../src/Models/DAO/DAOUser.php';
+require_once '../src/Models/DAO/DAOBet.php';
 
 class AuthController
 {
@@ -28,7 +30,12 @@ class AuthController
         if (!Auth::isLogged()) {
             header('Location: /');
         }
-        echo Renderer::render('/bets.php');
+        $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
+        $DAOBet = new DAOBet(Singleton::getInstance()->cnx);
+        $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
+        $bets = $DAOBet->findUserBets(1);
+        $data = compact('balance', 'bets');
+        echo Renderer::render('/bets.php', $data);
     }
 
     public static function actionLogin()
