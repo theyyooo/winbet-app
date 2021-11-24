@@ -19,21 +19,26 @@
     ?>
 
     <div style="width: 80%; height:100vh; display:flex; margin:auto; margin-top:20px">
+
         <?php require_once("displaySportsList.php") ?>
+
         <div style="width: 80%; height:100%; padding-left:20px">
+
+            <?php include_once("displayCompetition.php") ?>
+
             <div style="width: 100%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:10px">
-                <h1 style="font-size: 15px;">Prochains matchs</h1>
+                <h1 style="font-size: 15px;">Prochains matchs de <?= strtolower($data["sportLibelle"]) ?></h1>
             </div>
             <div style="width: 100%; display:flex;flex-wrap: wrap; margin-top:20px;text-align:center;justify-content:center">
                 <?php
                 foreach ($data['results'] as $match) {
                 ?>
                     <div style="width: 45%;padding-bottom:20px; height:300px; background-color:white;border-radius:8px; margin-right:20px;margin-left:20px;margin-top:10px;margin-bottom:10px;">
-                        <div style="height: 10%;color:grey; margin-top:10px;">
+                        <div style="height: 10%;color:grey;margin-top:10px;">
                             <div style="line-height:2em"><?= ($match->getCompetition())->getName() ?></div>
                         </div>
                         <div style="height: 40%; display:flex">
-                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;width:50%;background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>');"></div>
+                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;width:50%;background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getHomeTeam())->getCrestUrl()) ?>');"></div>
                             <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;width:50%;background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>');"></div>
                         </div>
                         <div style="height: 50%;">
@@ -64,6 +69,9 @@
                         </div>
                     </div>
                 <?php
+                }
+                if ($data["sportLibelle"] != "FOOTBALL") {
+                    echo "<div>Aucun match de " . strtolower($data["sportLibelle"]) . " n'est disponible pour le moment</div>";
                 }
                 ?>
             </div>
@@ -104,5 +112,13 @@
         color: black;
         border: #FBCD27 solid 1px;
         margin-bottom: 15px;
+    }
+    
+    .btnChampionnat{
+        background-color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
+        text-decoration: none;
+        color:black;
     }
 </style>
