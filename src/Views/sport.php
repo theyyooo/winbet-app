@@ -1,39 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body style="background-color: #f5f6f8; margin:0">
-
-    <?php require_once "header.php";?>
-
-    <div style="width: 100%; height:100vh;margin:auto">
-
+    <?php require_once "header.php"; ?>
+    <div class="sport-contain">
         <?php require_once("displaySportsList.php") ?>
-
-        <div style="width:70%;height:100%; padding-left:20px; margin-left:25%">
-
+        <div class="sport-container">
             <?php include_once("displayCompetition.php") ?>
-
-            <div style="margin-top: 30px;width: 90%;margin-left:4%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:10px">
+            <div class="sport-header">
                 <h1 style="font-size: 15px;">Prochains matchs de <?= strtolower($data["sportLibelle"]) ?></h1>
             </div>
-            <div style="width: 100%; display:flex;flex-wrap: wrap; margin-top:20px;text-align:center;justify-content:center">
+            <div class="sport-matchs">
                 <?php
                 foreach ($data['results'] as $match) {
                 ?>
-                    <div style="width: 45%;padding-bottom:20px; height:300px; background-color:white;border-radius:8px; margin-right:20px;margin-left:20px;margin-top:10px;margin-bottom:10px;">
+                    <div class="sport-matchs-card">
                         <div style="height: 10%;color:grey;margin-top:10px;">
                             <div style="line-height:2em"><?= ($match->getCompetition())->getName() ?></div>
                         </div>
                         <div style="height: 40%; display:flex">
-                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;width:50%;background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getHomeTeam())->getCrestUrl()) ?>');"></div>
-                            <div style="background-position:center;margin: 15px;background-size:contain;background-repeat: no-repeat;width:50%;background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>');"></div>
+                            <div class="team-background" style="background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getHomeTeam())->getCrestUrl()) ?>');"></div>
+                            <div class="team-background" style="background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>');"></div>
                         </div>
                         <div style="height: 50%;">
                             <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
@@ -46,7 +29,7 @@
                                     echo substr($match->getDate(), 0, 10);
                                 }
                                 ?> - <?= substr($match->getDate(), 11, 5) ?></div>
-                            <div style="height:65%;display: flex; margin-top:20px;font-size:10px;justify-content:space-between">
+                            <div class="sport-matchs-odds">
                                 <div style="width:30% ;display:grid;">
                                     <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>
                                     <div style="height: 50%"><button id="betButton" class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
@@ -74,48 +57,38 @@
             </div>
         </div>
     </div>
-</body>
 
-</html>
+    <style>
+        span {
+            display: block;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
 
-<style>
-    span {
-        display: block;
-        padding: 15px;
-        text-align: center;
-        font-size: 12px;
-    }
+        .linkSport {
+            text-decoration: none;
+            color: black;
+        }
 
-    .linkSport {
-        text-decoration: none;
-        color: black;
-    }
+        .divSport {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #efefef;
 
-    .divSport {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #efefef;
+        }
 
-    }
+        .betButton {
+            background-color: #FBCD27;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 25px;
+            padding-left: 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
+            border: #FBCD27 solid 1px;
+            margin-bottom: 15px;
+        }
 
-    .betButton {
-        background-color: #FBCD27;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-right: 25px;
-        padding-left: 25px;
-        border-radius: 5px;
-        text-decoration: none;
-        color: black;
-        border: #FBCD27 solid 1px;
-        margin-bottom: 15px;
-    }
-    
-    .btnChampionnat{
-        background-color: white;
-        padding: 5px 15px;
-        border-radius: 50px;
-        text-decoration: none;
-        color:black;
-    }
-</style>
+    </style>

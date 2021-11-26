@@ -6,8 +6,6 @@ session_start();
  * Controllers imports
  */
 require_once '../src/Controllers/SportController.php';
-// require_once '../src/Controllers/CityController.php';
-// require_once '../src/Controllers/CountryController.php';
 require_once '../src/Controllers/AuthController.php';
 
 ?>
@@ -24,8 +22,7 @@ require_once '../src/Controllers/AuthController.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <script defer src="/script.js"></script>
-    <!-- <link rel="stylesheet" href="/css/bootstrap.css" crossorigin="anonymous"> -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -55,10 +52,6 @@ require_once '../src/Controllers/AuthController.php';
                 userRoutes_get($fragments);
                 break;
             }
-        case "result": {
-                call_user_func_array(["PageController", "search"], $fragments);
-                break;
-            }
         default: {
                 call_user_func_array(["PageController", "notFound"], $fragments);
                 break;
@@ -77,51 +70,6 @@ require_once '../src/Controllers/AuthController.php';
                 }
             default: {
                     call_user_func_array(["SportController", "displaySportByCompetition"], $fragments);
-                    break;
-                }
-        }
-    }
-
-    function countryRoutes_get($fragments)
-    {
-
-        $action = array_shift($fragments);
-
-        switch ($action) {
-            case "details": {
-                    call_user_func_array(["CountryController", "display"], $fragments);
-                    break;
-                }
-            case "showcontinent": {
-                    call_user_func_array(["CountryController", "displayFromContinent"], $fragments);
-                    break;
-                }
-            case "show": {
-                    call_user_func_array(["CountryController", "displayAll"], $fragments);
-                    break;
-                }
-            case "update": {
-                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                        call_user_func_array(["CountryController", "displayUpdate"], $fragments);
-                    } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        call_user_func_array(["CountryController", "actionUpdate"], $fragments);
-                    }
-                    break;
-                }
-            case "delete": {
-                    call_user_func_array(["CountryController", "actionDelete"], $fragments);
-                    break;
-                }
-            case "add": {
-                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                        call_user_func_array(["CountryController", "displayAdd"], $fragments);
-                    } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        call_user_func_array(["CountryController", "actionAdd"], $fragments);
-                    }
-                    break;
-                }
-            default: {
-                    call_user_func_array(["PageController", "notFound"], $fragments);
                     break;
                 }
         }
@@ -169,9 +117,3 @@ require_once '../src/Controllers/AuthController.php';
 </body>
 
 </html>
-
-<style>
-    html {
-        font-family: 'Open Sans', sans-serif;
-    }
-</style>
