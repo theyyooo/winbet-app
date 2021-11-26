@@ -32,7 +32,7 @@ class ApiFootball
     public function getAllNextMatch($idCompetition): ?array
     {
         if (empty($idCompetition)) {
-            $curl = curl_init("http://api.football-data.org/v2/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d") . "");
+            $curl = curl_init("http://api.football-data.org/v2/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 5 days')) . "");
         } else {
             $curl = curl_init("http://api.football-data.org/v2/competitions/" . $idCompetition . "/matches?dateFrom=" . date("Y-m-d") . "&dateTo=" . date("Y-m-d", strtotime(date("Y-m-d") . ' + 7 days')) . "");
         }

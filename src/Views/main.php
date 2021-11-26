@@ -10,17 +10,11 @@
 
 <body style="background-color: #f5f6f8; margin:0">
 
-    <?php require_once "header.php";
+    <?php require_once "header.php";?>
 
-    if (isset($error)) {
-        echo "<div style='background-color:red; width:50%;margin-left:25%;text-align:center;margin-top:15px;padding-top:5px;padding-bottom:5px; border-radius: 10px;'>" . $error . "</div>";
-    }
-
-    ?>
-
-    <div style="width: 80%; height:100vh; display:flex; margin:auto; margin-top:20px">
+    <div style="width: 100%; height:100vh; display:flex; margin:auto; margin-top:20px">
         <?php require_once("displaySportsList.php") ?>
-        <div style="width: 80%; height:100%; padding-left:20px">
+        <div style="width: 70%; height:100%; padding-left:20px;margin-left:25%">
             <div style="width: 100%; background-color:#fff; border-radius:5px; box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px; padding:10px">
                 <h1 style="font-size: 15px;">Prochains matchs</h1>
             </div>

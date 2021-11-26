@@ -2,7 +2,7 @@
 require_once '../src/Models/Facade/Auth.php';
 ?>
 
-<header class="site-header">
+<header class="site-header" style="position:sticky;top:0px !important">
     <div class="site-header__wrapper">
         <a href="/"><img class="brand" src="/assets/WINBET.svg"></a>
         <nav>
