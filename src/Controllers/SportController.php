@@ -34,7 +34,7 @@ class SportController
         $DAOSport = new DAOSport(Singleton::getInstance()->cnx);
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
         $sports = $DAOSport->findAll();
-        $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
+        $balance =  Auth::isLogged() ? $DAOUser->findUserBalance($_SESSION['user_id']) : 0;
 
         if ($sportLibelle === "FOOTBALL") {
             $api = new ApiFootball(self::$token);

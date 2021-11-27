@@ -23,7 +23,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE bets(
-id INT PRIMARY KEY NOT NULL,
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 bet float NOT NULL,
 odds float NOT NULL,
 user_id int NOT NULL,
