@@ -69,4 +69,5 @@ class AuthController
         Auth::logout();
         header('Location: /');
     }
+
 }
