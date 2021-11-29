@@ -1,8 +1,6 @@
-let betButton = document.getElementById("betButton");
-console.log('L\'élément ' + betButton.tagName + ' a été récupéré !');
-
-document.getElementById("betButton").onsubmit = function (e) {
-    //Empêcher le rechargement de la page
-    e.preventDefault();
-    document.getElementById("betButton").style.color = red
-};
+function getInfoBet(homeTeam, idBet){
+    // var theMatch = JSON.parse(match)
+    console.log("values = " . homeTeam)      
+    // console.log(idBet)
+    // document.getElementById("displayHomeTeam").innerHTML = homeTeam 
+}
