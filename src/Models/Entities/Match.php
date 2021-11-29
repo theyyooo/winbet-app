@@ -12,7 +12,7 @@ class Maatch{
     private $competition;
     private $score;
     private $utcDate;
-    private $odds;
+    private $odds; //todo remove
 
     public function getId() {
         return $this->id;

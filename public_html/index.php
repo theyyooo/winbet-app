@@ -6,6 +6,7 @@ session_start();
  * Controllers imports
  */
 require_once '../src/Controllers/SportController.php';
+require_once '../src/Controllers/BetController.php';
 require_once '../src/Controllers/AuthController.php';
 
 ?>
@@ -50,6 +51,10 @@ require_once '../src/Controllers/AuthController.php';
             }
         case "user": {
                 userRoutes_get($fragments);
+                break;
+            }
+        case "sport": {
+                call_user_func_array(["BetController", "createBet"], $fragments);
                 break;
             }
         default: {
