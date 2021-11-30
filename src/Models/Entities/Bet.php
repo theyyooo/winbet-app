@@ -14,7 +14,7 @@ class Bet{
     }
 
     public function getBet(){
-        return strtoupper($this->bet);
+        return $this->bet;
     }
 
     public function getOdds(){
@@ -22,7 +22,11 @@ class Bet{
     }
 
     public function setOdds($odds){
-        $this->Label = $odds;
+        $this->odds = $odds;
+    }
+
+    public function setBet($bet){
+        $this->bet = $bet;
     }
 
     public function getUserId(){

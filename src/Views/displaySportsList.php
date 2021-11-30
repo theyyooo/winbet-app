@@ -8,15 +8,15 @@
             if ($data['sportLibelle'] === $value->label) {
         ?>
                 <div class="divSport" style="background-color:#FBCD27;padding-left:20px;">
-                    <img height="20px" class="imgSport" style="margin:0" src="<?=$value->img?>">
-                    <a class="linkSport" href="/sport/<?=$value->label?>"><span><?=$value->label ?></span></a>
+                    <img height="20px" class="imgSport" style="margin:0" src="<?= $value->img ?>">
+                    <a class="linkSport" href="/sport/<?= $value->label ?>"><span><?= $value->label ?></span></a>
                 </div>
             <?php
             } else {
             ?>
                 <div class="divSport" style="padding-left:20px;">
-                    <img height="20px" class="imgSport" src="<?=$value->img?>">
-                    <a class="linkSport" href="/sport/<?=$value->label?>"><span><?=$value->label ?></span></a>
+                    <img height="20px" class="imgSport" src="<?= $value->img ?>">
+                    <a class="linkSport" href="/sport/<?= $value->label ?>"><span><?= $value->label ?></span></a>
                 </div>
         <?php
             }
@@ -25,16 +25,20 @@
     </div>
     <div class="cart-card">
         <h3 style="text-align: center;padding-top:20px">Panier</h3>
-        <div style="height:50%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
-            <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
-                <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
-                <p id="displayHomeTeam"></p>
-                <p id="displayAwayTeam"></p>
-                <p id="displayBetSelected"></p>
-                <input type="number" id="name" required minlength="4" size="10">
-                <p id="gain"> 14 euros</p>
+        <form method="post" action="/bet">
+            <div style="height:50%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
+                <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
+                    <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
+                    <p id="displayHomeTeam"></p>
+                    <p id="displayAwayTeam"></p>
+                    <p id="displayBetSelected"></p>
+                    <input hidden type="number" id="match" name="match_id" required minlength="4" size="10">
+                    <input hidden type="number" id="odds" name="odds_id" required minlength="4" size="10">
+                    <input type="number" id="bet" name="bet" required minlength="4" size="10">
+                    <p id="gain"> 14 euros</p>
+                </div>
             </div>
-        </div>
-        <button id="bet" style="width:50%;text-align: center; background-color:#FBCD27; padding:10px 15px;margin-left:20%;border-radius: 5px;text-decoration: none;color: black;border: #FBCD27 solid 1px;">Parier</button>
+            <button type="submit" id="bet" style="width:50%;text-align: center; background-color:#FBCD27; padding:10px 15px;margin-left:20%;border-radius: 5px;text-decoration: none;color: black;border: #FBCD27 solid 1px;">Parier</button>
+        </form>
     </div>
 </div>

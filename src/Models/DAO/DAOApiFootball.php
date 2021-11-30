@@ -66,7 +66,7 @@ class ApiFootball
                 );
                 if (empty(($theMatch->getCompetition())->getName())) {
                     $theMatch->setCompetition((new Competition)->setId($match['competition']['id'])
-                                                               ->setName($data['competition']['name'])
+                            ->setName($data['competition']['name'])
                     );
                 }
                 $results[] = $theMatch;
@@ -78,5 +78,41 @@ class ApiFootball
         }
         curl_close($curl);
         return $results;
+    }
+
+    public function getMatchById($id, $odds_id)
+    {
+        $curl = curl_init("http://api.football-data.org/v2/matches/" . $id);
+
+        $data = $this->curlExec($curl);
+
+        if (is_null($data)) {
+            return null;
+        }
+        if ($data['match']) {
+            $theMatch = new Maatch();
+            $theMatch->setId($id);
+            $theMatch->setHomeTeam($data['match']["homeTeam"]["name"]);
+            $theMatch->setAwayTeam($data['match']["awayTeam"]["name"]);
+            $odds = 0;
+            switch ($odds_id) {
+                case 1:
+                    $odds = $data['match']['odds']['homeWin'];
+                    break;
+                case 2:
+                    $odds = $data['match']['odds']['draw'];
+                    break;
+                case 3:
+                    $odds = $data['match']['odds']['awayWin'];
+                    break;
+                default:
+                $odds = $data['match']['odds']['homeWin'];
+                    break;
+            }
+
+            $theMatch->setOdds($odds);
+            return $theMatch;
+        }
+        return false;
     }
 }

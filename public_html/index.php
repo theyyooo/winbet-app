@@ -53,7 +53,7 @@ require_once '../src/Controllers/AuthController.php';
                 userRoutes_get($fragments);
                 break;
             }
-        case "sport": {
+        case "bet": {
                 call_user_func_array(["BetController", "createBet"], $fragments);
                 break;
             }

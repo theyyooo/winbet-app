@@ -30,6 +30,7 @@ class DAOBet
     }
 
     public function saveBet($bet){
+        var_dump($bet);
         $SQL = "INSERT INTO bets ( bet, odds, user_id, match_id, status) VALUES (:bet, :odds, :user_id, :match_id, :status)";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("bet", $bet->getBet());
