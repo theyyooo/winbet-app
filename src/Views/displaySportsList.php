@@ -28,7 +28,11 @@
         <div style="height:50%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
             <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
                 <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
-                <p id="displayHomeTeam">test</p>
+                <p id="displayHomeTeam"></p>
+                <p id="displayAwayTeam"></p>
+                <p id="displayBetSelected"></p>
+                <input type="number" id="name" required minlength="4" size="10">
+                <p id="gain"> 14 euros</p>
             </div>
         </div>
         <button id="bet" style="width:50%;text-align: center; background-color:#FBCD27; padding:10px 15px;margin-left:20%;border-radius: 5px;text-decoration: none;color: black;border: #FBCD27 solid 1px;">Parier</button>
