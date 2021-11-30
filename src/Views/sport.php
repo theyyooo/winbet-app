@@ -32,15 +32,15 @@
                             <div class="sport-matchs-odds">
                                 <div style="width:30% ;display:grid;">
                                     <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>
-                                    <div style="height: 50%"><button onclick="getInfoBet(<?php $test = 'hello'; echo 'adele helloe';?>)" class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
+                                    <div style="height: 50%"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName() ?>")' class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
                                 </div>
                                 <div style="width:30% ;display:grid">
                                     <div style="height: 50%;margin:auto">MATCH NUL</div>
-                                    <div style="height: 50%;"><button onclick="getInfoBet(<?php echo ($match->getHomeTeam())->getName();?>)" class="betButton"><?= ($match->getOdds())->getDraw() ?></button></div>
+                                    <!-- <div style="height: 50%;"><button onclick="getInfoBet(<?php echo ($match->getHomeTeam())->getName();?>)" class="betButton"><?= ($match->getOdds())->getDraw() ?></button></div> -->
                                 </div>
                                 <div style="width:30% ;display:grid">
                                     <div style="height: 50%;margin:auto"><?= ($match->getAwayTeam())->getName() ?></div>
-                                    <div style="height: 50%;"><button onclick="getInfoBet(<?php echo ($match->getHomeTeam())->getName();?>)" class="betButton"><?= ($match->getOdds())->getAwayWin() ?></button></div>
+                                    <!-- <div style="height: 50%;"><button onclick="getInfoBet(<?php echo ($match->getHomeTeam())->getName();?>)" class="betButton"><?= ($match->getOdds())->getAwayWin() ?></button></div> -->
                                 </div>
                             </div>
                         </div>

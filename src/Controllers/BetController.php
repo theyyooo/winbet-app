@@ -15,14 +15,23 @@ class BetController
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
         $DAOMatch = new DAOMatch(Singleton::getInstance()->cnx);
 
-        $match = new Maatch(); // A remplir
+        $match_id = htmlspecialchars($_POST['match_id']);
+        $odds_id = htmlspecialchars($_POST['odds_id']);
+        $bet = htmlspecialchars($_POST['bet']);
+
+        
+        
+        $FindingMatch = $DAOMatch->findMatchByApiId($match_id);
+        if(!$FindingMatch){
+            $FindingMatch = new Maatch();
+            //fetch match
+
+            $DAOMatch->saveMatch($FindingMatch);
+        }
         $bet = new Bet();      // A remplir
+        // $bet->setBet($bet);
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
         $balance = $balance - $bet->getBet();
-        $FindingMatch = $DAOMatch->findMatchByApiId($match->getId());
-        if(!$FindingMatch){
-            $DAOMatch->saveMatch($match);
-        }
         $DAOBet->saveBet($bet);
         $DAOUser->updateUserBalance($_SESSION['user_id'], $balance);
 
