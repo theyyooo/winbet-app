@@ -1,9 +1,39 @@
-function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId){
-    document.getElementById("displayHomeTeam").innerHTML = homeTeam 
-    document.getElementById("displayAwayTeam").innerHTML = awayTeam 
-    document.getElementById("displayBetSelected").innerHTML = oddSelected 
-    console.log("bet : " , betSelected)
-    console.log("match : " , matchId)
+let bet
+
+function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId) {
+    if (document.getElementById("containNoMatch").hidden == false) {
+        document.getElementById("containNoMatch").hidden = true
+        document.getElementById("containMatch").hidden = false
+    }
+    else {
+        document.getElementById("containNoMatch").hidden = false
+        document.getElementById("containMatch").hidden = true
+    }
+
+    if (betSelected == 1) {
+        document.getElementById("displayBetSelected").innerHTML = homeTeam
+    }
+    else if (betSelected == 2) {
+        document.getElementById("displayBetSelected").innerHTML = "match nul"
+    }
+    else {
+        document.getElementById("displayBetSelected").innerHTML = awayTeam
+    }
+
+    document.getElementById("displayHomeTeam").innerHTML = homeTeam
+    document.getElementById("displayAwayTeam").innerHTML = awayTeam
+
+    document.getElementById("displayBet").innerHTML = oddSelected
+
+    document.getElementById("gain").innerHTML = (10 * oddSelected).toFixed(2)
+    bet = oddSelected
+
     document.getElementById("odds").value = betSelected;
     document.getElementById("match").value = matchId;
+
+}
+
+function calculGain(value) {
+
+    document.getElementById("gain").innerHTML = (bet * value).toFixed(2)
 }

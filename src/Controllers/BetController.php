@@ -22,8 +22,7 @@ class BetController
         $odds_id = htmlspecialchars($_POST['odds_id']);
         $bet = htmlspecialchars($_POST['bet']);
         $api = new ApiFootball(self::$token);
-        
-        
+                
         $FindingMatch = $DAOMatch->findMatchByApiId($match_id);
         if(!$FindingMatch){
             $FindingMatch = $api->getMatchById($match_id, $odds_id);

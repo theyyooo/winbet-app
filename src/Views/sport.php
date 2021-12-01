@@ -16,7 +16,7 @@
                         </div>
                         <div style="height: 40%; display:flex">
                             <div class="team-background" style="background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getHomeTeam())->getCrestUrl()) ?>');"></div>
-                            <div class="team-background" style="background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>');"></div>
+                            <div class="team-background" style="background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getAwayTeam())->getCrestUrl()) ?> ');"></div>
                         </div>
                         <div style="height: 50%;">
                             <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>

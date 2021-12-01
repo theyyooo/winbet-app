@@ -25,20 +25,39 @@
     </div>
     <div class="cart-card">
         <h3 style="text-align: center;padding-top:20px">Panier</h3>
-        <form method="post" action="/bet">
-            <div style="height:50%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
-                <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
-                    <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
+        <div id="containNoMatch" style="height: 70%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
+            <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
+                <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
+            </div>
+        </div>
+        <form method="post" action="/bet" id="containMatch" hidden="true" style="height:70%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
+            <div style="height: 90%;justify-content:center;flex-direction:column;align-self:center;">
+                <div id="addBet" style=" height: 20%;display: flex;justify-content: center;font-size:0.8em;align-items: center;">
                     <p id="displayHomeTeam"></p>
+                    -
                     <p id="displayAwayTeam"></p>
-                    <p id="displayBetSelected"></p>
-                    <input hidden type="number" id="match" name="match_id" required minlength="4" size="10">
-                    <input hidden type="number" id="odds" name="odds_id" required minlength="4" size="10">
-                    <input type="number" id="bet" name="bet" required minlength="4" size="10">
-                    <p id="gain"> 14 euros</p>
+                </div>
+                <div style="height: 10%; display:flex">
+                    <p style="width: 80%;text-align: center;font-size:0.7em">Résultat du match</p>
+                    <p style="width: 20%;text-align: center;font-size:0.7em">Cote</p>
+                </div>
+                <div style="height: 20%; display:flex">
+                    <p style="width: 80%;text-align: center;font-weight: bold;" id="displayBetSelected"></p>
+                    <p style="width: 20%;text-align: center;font-weight: bold;" id="displayBet"></p>
+                </div>
+                <div style="height: 20%; display:flex; align-items: center;">
+                    <p style="width: 40%;text-align: center;">Votre mise: </p>
+                    <input style="width: 20%;" name="bet" value=10 type="number" id="betPrice" onchange="calculGain(value)" min="1">
+                </div>
+                <div style="height: 20%; display:flex;align-items: center; justify-content:center">
+                    <p style="width: 60%;text-align: center">Gains potentiel: </p>
+                    <p style="width: 20%; text-align:center" id="gain"></p>
+                    <p style="text-align:center">€</p>
                 </div>
             </div>
-            <button type="submit" id="bet" style="width:50%;text-align: center; background-color:#FBCD27; padding:10px 15px;margin-left:20%;border-radius: 5px;text-decoration: none;color: black;border: #FBCD27 solid 1px;">Parier</button>
+            <input  type="HIDDEN" id="match" name="match_id">
+            <input  type="HIDDEN" id="odds" name="odds_id">
+            <button type="submit" id="bet" style="width:50%;text-align: center; background-color:#FBCD27; padding:10px 15px;margin-left:25%;border-radius: 5px;text-decoration: none;color: black;border: #FBCD27 solid 1px;">Parier</button>
         </form>
     </div>
 </div>
