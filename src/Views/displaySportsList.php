@@ -25,29 +25,29 @@
     </div>
     <div class="cart-card">
         <h3 style="text-align: center;padding-top:20px">Panier</h3>
-        <div id="containNoMatch" style="height: 70%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
+        <div id="containNoMatch" style="height: 70%;border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
             <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
                 <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
             </div>
         </div>
-        <form method="post" action="/bet" id="containMatch" hidden="true" style="height:70%; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
+        <form method="post" action="/bet" id="containMatch" hidden="true" style="height:70%;border-top:grey 3px solid; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
             <div style="height: 90%;justify-content:center;flex-direction:column;align-self:center;">
-                <div id="addBet" style=" height: 20%;display: flex;justify-content: center;font-size:0.8em;align-items: center;">
+                <div id="addBet" style="border-bottom: grey solid 3px; height: 20%;display: flex;justify-content: center;font-size:0.8em;align-items: center;">
                     <p id="displayHomeTeam"></p>
                     -
                     <p id="displayAwayTeam"></p>
                 </div>
-                <div style="height: 10%; display:flex">
-                    <p style="width: 80%;text-align: center;font-size:0.7em">Résultat du match</p>
-                    <p style="width: 20%;text-align: center;font-size:0.7em">Cote</p>
+                <div style="height: 20%; display:flex;align-items: center; justify-content:center">
+                    <p style="width: 70%;text-align: center;font-size:0.7em">Résultat du match</p>
+                    <p style="width: 30%;text-align: center;font-size:0.7em">Cote</p>
                 </div>
-                <div style="height: 20%; display:flex">
-                    <p style="width: 80%;text-align: center;font-weight: bold;" id="displayBetSelected"></p>
-                    <p style="width: 20%;text-align: center;font-weight: bold;" id="displayBet"></p>
+                <div style="height: 20%; display:flex;align-items: center; justify-content:center">
+                    <p style="width: 70%;text-align: center;font-weight: bold;" id="displayBetSelected"></p>
+                    <p style="width: 30%;text-align: center;font-weight: bold;" id="displayBet"></p>
                 </div>
                 <div style="height: 20%; display:flex; align-items: center;">
-                    <p style="width: 40%;text-align: center;">Votre mise: </p>
-                    <input style="width: 20%;" name="bet" value=10 type="number" id="betPrice" onchange="calculGain(value)" min="1">
+                    <p style="width: 50%;text-align: center;font-size:0.7em;padding:20%">Votre mise: </p>
+                    <input style="width: 20%;margin-right:15%" name="bet" value=10 type="number" id="betPrice" onchange="calculGain(value)" min="1">
                 </div>
                 <div style="height: 20%; display:flex;align-items: center; justify-content:center">
                     <p style="width: 60%;text-align: center">Gains potentiel: </p>

@@ -1,6 +1,6 @@
 let bet
 
-function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId) {
+function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId, event) {
     if (document.getElementById("containNoMatch").hidden == false) {
         document.getElementById("containNoMatch").hidden = true
         document.getElementById("containMatch").hidden = false
@@ -30,6 +30,8 @@ function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId) {
 
     document.getElementById("odds").value = betSelected;
     document.getElementById("match").value = matchId;
+
+    event.taget.style.backgroundColor = "red"
 
 }
 
