@@ -1,6 +1,0 @@
-INSERT INTO sports VALUES (01, "FOOTBALL", "/");
-INSERT INTO sports VALUES (02, "VOLLEYBALL", "/");
-INSERT INTO sports VALUES (03, "RUGBY", "/");
-INSERT INTO sports VALUES (04, "TENNIS", "/");
-INSERT INTO sports VALUES (05, "GOLF", "/");
-

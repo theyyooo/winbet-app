@@ -1,102 +1,101 @@
 <?php require_once "header.php"; ?>
 
-    <div class="sport-contain">
+<div class="sport-contain">
 
-        <?php require_once("displaySportsList.php") ?>
+    <?php require_once("displaySportsList.php") ?>
 
-        <div class="sport-container">
+    <div class="sport-container">
 
-            <?php include_once("displayCompetition.php") ?>
+        <?php include_once("displayCompetition.php") ?>
 
-            <?php if (isset($data["sportLibelle"])){ ?>
+        <?php if (isset($data["sportLibelle"])) { ?>
             <div class="sport-header">
                 <h1 style="font-size: 15px;">Prochains matchs de <?= strtolower($data["sportLibelle"]) ?></h1>
             </div>
-            <?php } ?>
+        <?php } ?>
 
-            <div class="sport-matchs">
-                <?php
-                foreach ($data['results'] as $match) {
-                ?>
-                    <div class="sport-matchs-card">
-                        <div style="height: 10%;color:grey;margin-top:10px;">
-                            <div style="line-height:2em"><?= ($match->getCompetition())->getName() ?></div>
-                        </div>
-                        <div style="height: 40%; display:flex">
-                            <div class="team-background" style="background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getHomeTeam())->getCrestUrl()) ?>');"></div>
-                            <div class="team-background" style="background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getAwayTeam())->getCrestUrl()) ?> ');"></div>
-                        </div>
-                        <div style="height: 50%;">
-                            <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
-                            <div>
-                                <?php if (date("Y-m-d") === substr($match->getDate(), 0, 10)) {
-                                    echo "Aujourd'hui";
-                                } else if (date("Y-m-d", strtotime(date("Y-m-d") . ' + 1 days')) === substr($match->getDate(), 0, 10)) {
-                                    echo "Demain";
-                                } else {
-                                    echo substr($match->getDate(), 0, 10);
-                                }
-                                ?> - <?= substr($match->getDate(), 11, 5) ?></div>
-                            <div class="sport-matchs-odds">
-                                <div style="width:30% ;display:grid;">
-                                    <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>
-                                    <div style="height: 50%"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName() ?>", "<?= ($match->getAwayTeam())->getName()?>", "<?= ($match->getOdds())->getHomeWin() ?>", 1, <?= $match->getId()?>)' class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
-                                </div>
-                                <div style="width:30% ;display:grid">
-                                    <div style="height: 50%;margin:auto">MATCH NUL</div>
-                                    <div style="height: 50%;"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName()?>", "<?= ($match->getAwayTeam())->getName()?> ", "<?= ($match->getOdds())->getDraw() ?>", 2, <?= $match->getId()?>)' class="betButton"><?= ($match->getOdds())->getDraw() ?></button></div>
-                                </div>
-                                <div style="width:30% ;display:grid">
-                                    <div style="height: 50%;margin:auto"><?= ($match->getAwayTeam())->getName() ?></div>
-                                    <div style="height: 50%;"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName()?>", "<?= ($match->getAwayTeam())->getName()?>", "<?= ($match->getOdds())->getAwayWin() ?>", 3, <?= $match->getId()?>)' class="betButton"><?= ($match->getOdds())->getAwayWin() ?></button></div>
-                                </div>
+        <div class="sport-matchs">
+            <?php
+            foreach ($data['results'] as $match) {
+            ?>
+                <div class="sport-matchs-card">
+                    <div style="height: 10%;color:grey;margin-top:10px;">
+                        <div style="line-height:2em"><?= ($match->getCompetition())->getName() ?></div>
+                    </div>
+                    <div style="height: 40%; display:flex">
+                        <div class="team-background" style="background-image: url('<?= ($match->getHomeTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getHomeTeam())->getCrestUrl()) ?>');"></div>
+                        <div class="team-background" style="background-image: url('<?= ($match->getAwayTeam())->getCrestUrl() ?>'),  url('<?= str_replace("svg", "png", ($match->getAwayTeam())->getCrestUrl()) ?> ');"></div>
+                    </div>
+                    <div style="height: 50%;">
+                        <div style="height:20%"><?= ($match->getHomeTeam())->getName() ?> - <?= ($match->getAwayTeam())->getName() ?></div>
+                        <div>
+                            <?php if (date("Y-m-d") === substr($match->getDate(), 0, 10)) {
+                                echo "Aujourd'hui";
+                            } else if (date("Y-m-d", strtotime(date("Y-m-d") . ' + 1 days')) === substr($match->getDate(), 0, 10)) {
+                                echo "Demain";
+                            } else {
+                                echo substr($match->getDate(), 0, 10);
+                            }
+                            ?> - <?= substr($match->getDate(), 11, 5) ?></div>
+                        <div class="sport-matchs-odds">
+                            <div style="width:30% ;display:grid;">
+                                <div style="height: 50%;margin:auto"><?= ($match->getHomeTeam())->getName() ?></div>
+                                <div style="height: 50%"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName() ?>", "<?= ($match->getAwayTeam())->getName() ?>", "<?= ($match->getOdds())->getHomeWin() ?>", 1, <?= $match->getId() ?>)' class="betButton"><?= ($match->getOdds())->getHomeWin() ?></button></div>
+                            </div>
+                            <div style="width:30% ;display:grid">
+                                <div style="height: 50%;margin:auto">MATCH NUL</div>
+                                <div style="height: 50%;"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName() ?>", "<?= ($match->getAwayTeam())->getName() ?> ", "<?= ($match->getOdds())->getDraw() ?>", 2, <?= $match->getId() ?>)' class="betButton"><?= ($match->getOdds())->getDraw() ?></button></div>
+                            </div>
+                            <div style="width:30% ;display:grid">
+                                <div style="height: 50%;margin:auto"><?= ($match->getAwayTeam())->getName() ?></div>
+                                <div style="height: 50%;"><button onclick='getInfoBet("<?= ($match->getHomeTeam())->getName() ?>", "<?= ($match->getAwayTeam())->getName() ?>", "<?= ($match->getOdds())->getAwayWin() ?>", 3, <?= $match->getId() ?>)' class="betButton"><?= ($match->getOdds())->getAwayWin() ?></button></div>
                             </div>
                         </div>
                     </div>
-                <?php
-                }
-                if ($data["sportLibelle"] != "FOOTBALL" && !is_null($data["sportLibelle"])) {
-                    echo "<div>Aucun match de " . strtolower($data["sportLibelle"]) . " n'est disponible pour le moment</div>";
-                }
-                if (isset($error)) {
-                    echo "<div>Aucun match n'est disponible pour le moment</div>";
-                }
-                ?>
-            </div>
+                </div>
+            <?php
+            }
+            if ($data["sportLibelle"] != "FOOTBALL" && !is_null($data["sportLibelle"])) {
+                echo "<div>Aucun match de " . strtolower($data["sportLibelle"]) . " n'est disponible pour le moment</div>";
+            }
+            if (isset($error)) {
+                echo "<div>Aucun match n'est disponible pour le moment</div>";
+            }
+            ?>
         </div>
     </div>
+</div>
 
-    <style>
-        span {
-            display: block;
-            padding: 15px;
-            text-align: center;
-            font-size: 12px;
-        }
+<style>
+    span {
+        display: block;
+        padding: 15px;
+        text-align: center;
+        font-size: 12px;
+    }
 
-        .linkSport {
-            text-decoration: none;
-            color: black;
-        }
+    .linkSport {
+        text-decoration: none;
+        color: black;
+    }
 
-        .divSport {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #efefef;
+    .divSport {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #efefef;
 
-        }
+    }
 
-        .betButton {
-            background-color: #FBCD27;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            padding-right: 25px;
-            padding-left: 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: black;
-            border: #FBCD27 solid 1px;
-            margin-bottom: 15px;
-        }
-
-    </style>
+    .betButton {
+        background-color: #FBCD27;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 25px;
+        padding-left: 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        border: #FBCD27 solid 1px;
+        margin-bottom: 15px;
+    }
+</style>

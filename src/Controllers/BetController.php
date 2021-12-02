@@ -23,11 +23,14 @@ class BetController
         $odds_id = htmlspecialchars($_POST['odds_id']);
         $bet = htmlspecialchars($_POST['bet']);
         $api = new ApiFootball(self::$token);
+        $exist = true;
                 
         $FindingMatch = $DAOMatch->findMatchByApiId($match_id);
-        
         if($FindingMatch == null){
-            $FindingMatch = $api->getMatchById($match_id, $odds_id);
+            $exist = false;
+        }
+        $FindingMatch = $api->getMatchById($match_id, $odds_id);
+        if(!$exist){
             $DAOMatch->saveMatch($FindingMatch);
         }
         $newbet = new Bet();
@@ -36,15 +39,18 @@ class BetController
         $newbet->setUserId($_SESSION['user_id']);
         $newbet->setMatchId($match_id);
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
+        $response = '';
         if($bet > $balance){
-                $error = "Solde insuffisant";
+                $response = 1;
         } else {
             $balance = $balance - $bet;
             $DAOBet->saveBet($newbet);
             $DAOUser->updateUserBalance($_SESSION['user_id'], $balance);
-            $error = "Pari enregistré";
+            $response = 2;
         }
-
-       header('Location: /');
+        if($response == ''){
+            header('Location: /');
+        }
+        header('location:/index.php?response='.$response);
     }
 }
