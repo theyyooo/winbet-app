@@ -46,7 +46,7 @@ require_once '../src/Controllers/AuthController.php';
                 break;
             }
         case "sport": {
-                call_user_func_array(["SportController", "displaySport"], $fragments);
+                call_user_func_array(["SportController", "display"], $fragments);
                 break;
             }
         case "user": {
@@ -61,23 +61,6 @@ require_once '../src/Controllers/AuthController.php';
                 call_user_func_array(["PageController", "notFound"], $fragments);
                 break;
             }
-    }
-
-    function sportRoutes_get($fragments)
-    {
-
-        $action = array_shift($fragments);
-
-        switch ($action) {
-            case '': {
-                    call_user_func_array(["SportController", "displaySport"], $fragments);
-                    break;
-                }
-            default: {
-                    call_user_func_array(["SportController", "displaySportByCompetition"], $fragments);
-                    break;
-                }
-        }
     }
 
     function userRoutes_get($fragments)
