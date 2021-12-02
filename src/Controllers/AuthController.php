@@ -33,7 +33,7 @@ class AuthController
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
         $DAOBet = new DAOBet(Singleton::getInstance()->cnx);
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
-        $bets = $DAOBet->findUserBets(1);
+        $bets = $DAOBet->findUserBets($_SESSION['user_id']);
         $data = compact('balance', 'bets');
         echo Renderer::render('/bets.php', $data);
     }

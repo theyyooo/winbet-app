@@ -55,7 +55,7 @@
                     </div>
                 <?php
                 }
-                if ($data["sportLibelle"] != "FOOTBALL") {
+                if ($data["sportLibelle"] != "FOOTBALL" && !is_null($data["sportLibelle"])) {
                     echo "<div>Aucun match de " . strtolower($data["sportLibelle"]) . " n'est disponible pour le moment</div>";
                 }
                 if (isset($error)) {

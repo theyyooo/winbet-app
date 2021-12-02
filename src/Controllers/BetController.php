@@ -13,6 +13,7 @@ class BetController
     public static function createBet(){
         if (!Auth::isLogged()) {
             header('Location: /user/login');
+            die;
         }
         $DAOBet = new DAOBet(Singleton::getInstance()->cnx);
         $DAOUser = new DAOUser(Singleton::getInstance()->cnx);
@@ -24,7 +25,8 @@ class BetController
         $api = new ApiFootball(self::$token);
                 
         $FindingMatch = $DAOMatch->findMatchByApiId($match_id);
-        if(!$FindingMatch){
+        
+        if($FindingMatch == null){
             $FindingMatch = $api->getMatchById($match_id, $odds_id);
             $DAOMatch->saveMatch($FindingMatch);
         }

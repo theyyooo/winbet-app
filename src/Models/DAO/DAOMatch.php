@@ -12,7 +12,8 @@ class DAOMatch
         $this->cnx = $cnx;
     }
 
-    public function saveMatch($match){
+    public function saveMatch($match)
+    {
         $SQL = "INSERT INTO matchs (id, home_team_score, visitor_team_score, home_team_label, visitor_team_label, status) VALUES (:id, :home_team_score, :visitor_team_score, :home_team_label, :visitor_team_label, :status)";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("id", $match->getId());
@@ -24,13 +25,18 @@ class DAOMatch
         $preparedStatement->execute();
     }
 
-    public function findMatchByApiId($id){
+    public function findMatchByApiId($id)
+    {
         $SQL = "SELECT * FROM matchs WHERE id = :id";
+        echo "SELECT * FROM matchs WHERE id = :id";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("id", $id);
         $preparedStatement->execute();
-        $match = $preparedStatement->fetchObject("Maatch");
-        return $match;
+        // $match = $preparedStatement->fetchObject("Maatch");     ICI tu mapp en Maatch, mais il ne comprend pas
+        // return $match;
+        foreach ($preparedStatement as $row) {
+            print_r($row);
+        }
+        die;
     }
-
 }
