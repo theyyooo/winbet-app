@@ -7,7 +7,8 @@ class Bet{
     private $odds;
     private $user_id;
     private $match_id;
-    private $status;
+    private $odds_id;
+    private $bet_status;
 
     public function getId(){
         return $this->id;
@@ -23,6 +24,14 @@ class Bet{
 
     public function setOdds($odds){
         $this->odds = $odds;
+    }
+
+    public function getOddsId(){
+        return $this->odds_id;
+    }
+
+    public function setOddsId($odds_id){
+        $this->odds_id = $odds_id;
     }
 
     public function setBet($bet){
@@ -46,11 +55,11 @@ class Bet{
     }
 
     public function getStatus(){
-        return $this->status;
+        return $this->bet_status;
     }
 
     public function setStatus($status){
-        $this->status = $status;
+        $this->bet_status = $status;
     }
 }
 

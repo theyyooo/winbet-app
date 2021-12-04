@@ -30,14 +30,14 @@ class DAOBet
     }
 
     public function saveBet($bet){
-        var_dump($bet);
-        $SQL = "INSERT INTO bets ( bet, odds, user_id, match_id, status) VALUES (:bet, :odds, :user_id, :match_id, :status)";
+        $SQL = "INSERT INTO bets ( bet, odds, user_id, match_id, odds_id, bet_status) VALUES (:bet, :odds, :user_id, :match_id, :odds_id, :bet_status)";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("bet", $bet->getBet());
         $preparedStatement->bindValue("odds", $bet->getOdds());
         $preparedStatement->bindValue("user_id", $bet->getUserId());
         $preparedStatement->bindValue("match_id", $bet->getMatchId());
-        $preparedStatement->bindValue("status", 0);
+        $preparedStatement->bindValue("odds_id", $bet->getOddsId());
+        $preparedStatement->bindValue("bet_status", 0);
         $preparedStatement->execute();
     }
 

@@ -279,7 +279,19 @@ nav {
     line-height: 2.5em;
     text-align:center;
     padding-left:25px;
-    width: 25%;
+    width: 30%;
+    display: flex;
+}
+
+.betspan{
+    padding:0px;
+    margin-right: 15px;
+}
+
+.betspan-bet{
+    text-decoration: underline #FBCD27;
+    padding:0px;
+    margin-right: 15px;
 }
 
 .bet-odds{
@@ -292,6 +304,18 @@ nav {
 
 .bet-status{
     background-color: #bbb;
+    border-radius:3px;
+    padding:10px 35px;
+}
+
+.bet-status-good{
+    background-color: #88c56e;
+    border-radius:3px;
+    padding:10px 35px;
+}
+
+.bet-status-bad{
+    background-color: #c56e6e;
     border-radius:3px;
     padding:10px 35px;
 }
@@ -412,6 +436,10 @@ nav {
 }
 
 .btnChampionnatbckg{
+    padding: 5px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    color:black;
     background-color:#FBCD27;
 }
 

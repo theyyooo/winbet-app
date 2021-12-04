@@ -10,7 +10,7 @@ A l'aide des différentes côtes, il a la possibilité de miser sur 3 types de p
 - Match nul
 - Victoir équipe 2
 
-Le pari est alors enregistré en base de données et accessible depuis sont éspace personel. Le match est également enregistré si celui ci n'est pas déjà présent dans la base.
+Le pari est alors enregistré en base de données et accessible depuis son éspace personel. Le match est également enregistré si celui ci n'est pas déjà présent dans la base.
 
 L'utilisateur doit être connécté pour éffecter un pari.
 
@@ -25,7 +25,10 @@ Lors de la création d'un pari, la cote du match est récupéré via l'api afin 
 - Cloner le projet
 `git clone https://github.com/mickaelarabian/betwin-app.git`
 
-- Lancer votre serveur apache
+- Lancer votre serveur apache pour l'environnement php
+
+- Installer le package curl pour php
+`sudo apt-get install php7.4-curl`
 
 - Créer la base de donnée
 `create database winbet`
@@ -79,7 +82,7 @@ L'application web a été développé en respectant un certain gitflow:
 Pour aller plus loin différentes fonctionnalités pourrait être implémentés:
 
 - Espace administrateur permetant de gérer le resultat des paris
-- Un systeme de droit et permission permetant de limiter les accès à l'epace administrateurs
+- Un systeme de droit et permission permetant de limiter les accès à l'espace administrateur
 - Des statistiques pour l'utilisateurs
-- La possibilité de faire plusieurs paris d'un coup (gestion d'un paneir avec variables de sessions)
+- La possibilité de faire plusieurs paris d'un coup (gestion d'un panier avec variables de sessions)
 - La résponsivité avec les medias queries de css

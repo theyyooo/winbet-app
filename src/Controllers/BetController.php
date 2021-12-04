@@ -36,6 +36,7 @@ class BetController
         $newbet = new Bet();
         $newbet->setBet($bet);
         $newbet->setOdds($FindingMatch->getOdds());
+        $newbet->setOddsId($odds_id);
         $newbet->setUserId($_SESSION['user_id']);
         $newbet->setMatchId($match_id);
         $balance = $DAOUser->findUserBalance($_SESSION['user_id']);
