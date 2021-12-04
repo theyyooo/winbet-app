@@ -402,6 +402,19 @@ nav {
     color:black;
 }
 
+.divChampionnat{
+    width:18%;
+    text-align:center
+}
+
+.divChampionnatC1{
+    width:25%
+}
+
+.btnChampionnatbckg{
+    background-color:#FBCD27;
+}
+
 .btnChampionnat:hover{
     background-color: #f1f1f1;
     padding: 5px 15px;
@@ -463,3 +476,225 @@ nav {
     font-weight: 700;
     padding: 5px;
 }
+
+.historyBet{
+    width: 100%; 
+    margin-top:20px;
+}
+
+.displayCompetition{
+    width: 70%; 
+    display:flex; 
+    padding:10px; 
+    position:fixed; 
+    top:72px; 
+    padding:30px; 
+    background-color: #f5f6f8;
+    margin:0
+}
+
+.panierTitle{
+    padding-top:20px;
+    text-align:center;
+    padding-bottom:20px
+}
+
+.containNoMatch{
+    height: 70%;
+    border-left:grey 3px solid;
+    margin:40px;
+    border-right:grey 3px solid;
+    margin:40px
+}
+
+.containNoMatch2{
+    height: 100%;
+    justify-content:center;
+    flex-direction:column;
+    align-self:center;
+}
+
+.noPariSelected{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+    text-align: center;
+}
+
+.formWithMatch{
+    height:80%; 
+    border-top: grey solid 2px
+}
+
+.formWithMatch2{
+    height: 90%;
+    justify-content:center;
+    flex-direction:column;
+    align-self:center;
+}
+
+.displayTeamForBet{
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    font-size:0.9em;
+    align-items: center;
+}
+
+.displayTeamForBet2{
+    display: flex;
+    justify-content: center
+}
+
+.divForStyle{
+    width:25px
+}
+
+.divBin{
+    padding-right:10px
+}
+
+.divResultatCotes{
+    height: 10%; 
+    display:flex;
+    align-items: center; 
+    justify-content:center;
+    font-size:0.6em
+}
+
+.resultatMatch{
+    width: 70%;
+    text-align: center;
+}
+
+.cote{
+    width: 30%;
+    text-align: center;
+}
+
+.affichageResultatCotes{
+    height: 20%; 
+    display:flex;
+    align-items: center; 
+    justify-content:center
+}
+
+.affichResultatMatch{
+    width: 70%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.affichCote{
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.montantMise{
+    height: 10%; display:flex; align-items: center; justify-content:center
+}
+
+.votreMise{
+    text-align: center;font-size:0.7em;padding:10%
+}
+
+.inputMise{
+    width: 10%;padding:3px;margin-top:0;margin-bottom:0
+}
+
+.divGainsPotentiel{
+    height: 30%; display:flex;align-items: center; justify-content:center
+}
+
+.gainPotentiel{
+    text-align: center;
+    padding-right:6px
+}
+
+.gains{
+    text-align:center; 
+    padding-right:6px  
+}
+
+.euros{
+    text-align:center
+}
+
+.btnParierForm{
+    height:10%
+}
+
+.nextMatchDe{
+    font-size: 15px;
+}
+
+.divNameCompet{
+    height: 10%;color:grey;margin-top:10px;
+}
+
+.nameCompet{
+    line-height:2em"
+}
+
+.divTeamsName{
+    height: 40%; display:flex
+}
+
+.divInfoMatch{
+    height: 50%;
+}
+
+.divDisplayNameteams{
+    height:20%
+}
+
+.divButton{
+    width:30% ;
+    display:grid;
+}
+
+.divButtonLibelleResultat{
+    height: 50%;
+    margin:auto
+}
+
+.btnBetMatch{
+    height: 50%;
+}
+
+span {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.linkSport {
+    text-decoration: none;
+    color: black;
+}
+
+.divSport {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+
+}
+
+.betButton {
+    background-color: #FBCD27;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 25px;
+    padding-left: 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    border: #FBCD27 solid 1px;
+    margin-bottom: 15px;
+}
+
+

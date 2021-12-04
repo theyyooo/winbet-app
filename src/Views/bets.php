@@ -12,7 +12,7 @@
                     <h1 class="bets-title">Mes paris</h1>
                 </div>
             </div>
-            <div style="width: 100%; margin-top:20px;">
+            <div class="historyBet">
                 <?php foreach ($data['bets'] as $bet) { ?>
                     <div class="bet-card">
                         <div class="bet-teams">
