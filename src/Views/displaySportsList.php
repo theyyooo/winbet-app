@@ -14,41 +14,49 @@
         <?php } ?>
     </div>
     <div class="cart-card">
-        <h3 style="text-align: center;padding-top:20px">Panier</h3>
-       
+        <div style="padding-top:20px;text-align:center;padding-bottom:20px">
+            <h3>Panier</h3>
+        </div>
         <div id="containNoMatch" style="height: 70%;border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
             <div style="height: 100%;justify-content:center;flex-direction:column;align-self:center;">
                 <p id="addBet" style="flex-direction: column;display: flex;justify-content: center;align-self: center;height: 100%;text-align: center;">Aucun Pari séléctionné</p>
             </div>
         </div>
-        <form method="post" action="/bet" id="containMatch" hidden="true" style="height:70%;border-top:grey 3px solid; border-left:grey 3px solid;margin:40px;border-right:grey 3px solid;margin:40px">
+        <form method="post" action="/bet" id="containMatch" hidden="true" style="height:80%; border-top: grey solid 2px">
             <div style="height: 90%;justify-content:center;flex-direction:column;align-self:center;">
-                <div id="addBet" style="border-bottom: grey solid 3px; height: 20%;display: flex;justify-content: center;font-size:0.8em;align-items: center;">
-                    <p id="displayHomeTeam"></p>
-                    -
-                    <p id="displayAwayTeam"></p>
+                <div id="addBet" style="height: 30%;display: flex;justify-content: space-between;font-size:0.9em;align-items: center;">
+                    <div style="width:25px"></div>
+                    <div style="display: flex;justify-content: center">
+                        <p id="displayHomeTeam"></p>
+                        -
+                        <p id="displayAwayTeam"></p>
+                    </div>
+                    <div style="padding-right:10px"><button type="button" onclick='deleteBet()'><img width="15px" src="https://image.flaticon.com/icons/png/512/39/39220.png"></button></div>
                 </div>
-                <div style="height: 20%; display:flex;align-items: center; justify-content:center">
-                    <p style="width: 70%;text-align: center;font-size:0.7em">Résultat du match</p>
-                    <p style="width: 30%;text-align: center;font-size:0.7em">Cote</p>
+                <div style="height: 10%; display:flex;align-items: center; justify-content:center;font-size:0.6em">
+                    <p style="width: 70%;text-align: center;">Résultat du match</p>
+                    <p style="width: 30%;text-align: center;">Cote</p>
                 </div>
                 <div style="height: 20%; display:flex;align-items: center; justify-content:center">
                     <p style="width: 70%;text-align: center;font-weight: bold;" id="displayBetSelected"></p>
                     <p style="width: 30%;text-align: center;font-weight: bold;" id="displayBet"></p>
                 </div>
-                <div style="height: 20%; display:flex; align-items: center;">
-                    <p style="width: 50%;text-align: center;font-size:0.7em;padding:10%">Votre mise: </p>
-                    <input style="width: 30%;margin-right:15%" name="bet" type="number" id="betPrice" onchange="calculGain(value)" min="1">
+                <div style="height: 10%; display:flex; align-items: center; justify-content:center">
+                    <p style="text-align: center;font-size:0.7em;padding:10%">Votre mise: </p>
+                    <input style="width: 10%;padding:3px;margin-top:0;margin-bottom:0" name="bet" type="number" id="betPrice" onchange="calculGain(value)" min="1">
+                    <p>€</p>
                 </div>
-                <div style="height: 20%; display:flex;align-items: center; justify-content:center">
-                    <p style="width: 60%;text-align: center">Gains potentiel: </p>
-                    <p style="width: 40%; text-align:center" id="gain"></p>
+                <div style="height: 30%; display:flex;align-items: center; justify-content:center">
+                    <p style="text-align: center;padding-right:6px">Gains potentiel: </p>
+                    <p style="text-align:center; padding-right:6px" id="gain"></p>
                     <p style="text-align:center">€</p>
                 </div>
             </div>
             <input type="hidden" id="match" name="match_id">
             <input type="hidden" id="odds" name="odds_id">
-            <button class="btn-cart" type="submit" id="bet">Parier</button>
+            <div style="height:10%">
+                <button class="btn-cart" type="submit" id="bet">Parier</button>
+            </div>
         </form>
     </div>
 </div>

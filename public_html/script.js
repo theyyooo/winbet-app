@@ -16,10 +16,6 @@ function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId, event
         document.getElementById("containNoMatch").hidden = true
         document.getElementById("containMatch").hidden = false
     }
-    else {
-        document.getElementById("containNoMatch").hidden = false
-        document.getElementById("containMatch").hidden = true
-    }
 
     if (betSelected == 1) {
         document.getElementById("displayBetSelected").innerHTML = homeTeam
@@ -86,8 +82,19 @@ function calculGain(value) {
 function loadBasket() {
 
     if (!!document.getElementById("success") && document.getElementById("success").innerHTML === "Pari enregistré") {
-        console.log(document.getElementById("success").innerHTM)
         sessionStorage.clear();
+    }
+
+    if (!!document.getElementById("success")) {
+        setTimeout(function () {
+            document.getElementById("success").style.display = "none"
+        }, 5000)
+    }
+
+    if (!!document.getElementById("bad")) {
+        setTimeout(function () {
+            document.getElementById("bad").style.display = "none"
+        }, 5000)
     }
 
     if (sessionStorage.getItem("monPAri") != null) {
@@ -106,4 +113,10 @@ function loadBasket() {
         document.getElementById("odds").value = monPari["betSelected"]
         document.getElementById("match").value = monPari["matchId"]
     }
+}
+
+function deleteBet() {
+    sessionStorage.clear();
+    document.getElementById("containNoMatch").hidden = false
+    document.getElementById("containMatch").hidden = true
 }
