@@ -6,6 +6,13 @@
 
     <div class="sport-container">
 
+        <?php
+        if ($_GET['response'] == 1) { ?>
+            <span id="bad" class="bad">Solde Insuffisant</span> <?php
+                                                    } else if ($_GET['response'] == 2) { ?>
+            <span id="success" class="success">Pari enregistré</span> <?php
+                                                                    } ?>
+
         <?php include_once("displayCompetition.php") ?>
 
         <?php if (isset($data["sportLibelle"])) { ?>

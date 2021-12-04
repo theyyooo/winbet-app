@@ -26,7 +26,7 @@ require_once '../src/Controllers/AuthController.php';
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="loadBasket()">
 
     <?php
 
