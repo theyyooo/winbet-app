@@ -2,8 +2,15 @@
 
     <div class="bets-contain">
         <div class="bets-container">
-            <div class="bets-header">
-                <h1 class="bets-title">Mes paris</h1>
+            <div class="backBets-header">
+                <a class="back-header" href="/">
+                    <div >
+                        <img class="back-title" width="20px" src="https://image.flaticon.com/icons/png/512/93/93634.png">
+                    </div>
+                </a>
+                <div class="bets-header">
+                    <h1 class="bets-title">Mes paris</h1>
+                </div>
             </div>
             <div style="width: 100%; margin-top:20px;">
                 <?php foreach ($data['bets'] as $bet) { ?>

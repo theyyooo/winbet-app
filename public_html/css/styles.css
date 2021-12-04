@@ -236,13 +236,32 @@ nav {
 }
 
 .bets-header{
-    width: 100%;
+    width: 70%;
     background-color:#fff;
     border-radius:5px;
     box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px;
 }
 
+.back-header{
+    text-align: center;
+    width: 20%;
+    background-color:#fff;
+    border-radius:5px;
+    box-shadow: rgb(211 211 211 / 20%) 0px 2px 8px 0px;
+}
+
+.backBets-header{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .bets-title{
+    font-size: 15px;
+    padding:15px;
+}
+
+.back-title{
     font-size: 15px;
     padding:15px;
 }
