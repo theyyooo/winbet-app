@@ -1,4 +1,4 @@
-
+let thisSource
 
 let thisBet
 
@@ -12,6 +12,28 @@ let thisOddSelected
 let thisValueBet
 
 function getInfoBet(homeTeam, awayTeam, oddSelected, betSelected, matchId, event) {
+    event = event || window.event;
+    var source = event.target || event.srcElement;
+    console.log(source)
+    if (thisSource != source) {
+        if (thisSource != null) {
+            thisSource.style.backgroundColor = '#FBCD27'
+            thisSource.style.border = '#FBCD27'
+        }
+        source.style.backgroundColor = 'red'
+        source.style.border = 'red'
+    }
+    else {
+        source.style.backgroundColor = '#FBCD27'
+        source.style.border = '#FBCD27'
+        sessionStorage.clear();
+        document.getElementById("containNoMatch").hidden = false
+        document.getElementById("containMatch").hidden = true
+        thisSource = null
+        return
+    }
+    thisSource = source
+
     if (document.getElementById("containNoMatch").hidden == false) {
         document.getElementById("containNoMatch").hidden = true
         document.getElementById("containMatch").hidden = false
@@ -80,6 +102,8 @@ function calculGain(value) {
 }
 
 function loadBasket() {
+
+
 
     if (!!document.getElementById("success") && document.getElementById("success").innerHTML === "Pari enregistré") {
         sessionStorage.clear();
