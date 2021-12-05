@@ -143,4 +143,6 @@ function deleteBet() {
     sessionStorage.clear();
     document.getElementById("containNoMatch").hidden = false
     document.getElementById("containMatch").hidden = true
+    thisSource.style.backgroundColor = '#FBCD27'
+    thisSource.style.border = '#FBCD27'
 }

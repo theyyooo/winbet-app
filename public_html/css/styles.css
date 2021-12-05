@@ -725,4 +725,12 @@ span {
     margin-bottom: 15px;
 }
 
+.divImgLog{
+    height: 100vh; 
+    background-image: url('https://i.la-croix.com/1400x933/smart/2019/07/05/1201033571/football-feminin-quinstitution-produire-autre-systeme-valeurs-Non-puisque-largent-entre-danse_0.jpg'); 
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 
