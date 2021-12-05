@@ -10,15 +10,15 @@ A l'aide des différentes côtes, il a la possibilité de miser sur 3 types de p
 - Match nul
 - Victoir équipe 2
 
-Le pari est alors enregistré en base de données et accessible depuis son éspace personel. Le match est également enregistré si celui ci n'est pas déjà présent dans la base.
+Le pari est alors enregistré en base de données et accessible depuis son espace personel. Le match est également enregistré si celui-ci n'est pas déjà présent dans la base.
 
-L'utilisateur doit être connécté pour éffecter un pari.
+L'utilisateur doit être connnecté pour éffecter un pari.
 
 A l'inscription, l'utilisateur bénéficie de 200 euros crédité sur son compte.
 
-Si le solde est inssufisant il ne pourra pas créer de pari.
+Si le solde est insufisant il ne pourra pas créer de pari.
 
-Lors de la création d'un pari, la cote du match est récupéré via l'api afin que l'utilisateur ne puisse pas modifier ces valeurs et éviter les triches.
+Lors de la création d'un pari, la cote du match est récupéréé via l'api afin que l'utilisateur ne puisse pas modifier ces valeurs et éviter les triches.
 
 ## Déploiement du projet
 
@@ -44,17 +44,21 @@ Lors de la création d'un pari, la cote du match est récupéré via l'api afin 
 
 ## Les diférentes routes du front
 
-- `/` Page d'acceuil qui présentes les prochains matchs
-- `/sport/[sport]` Les prochains matchs trié par sport
+- `/` Page d'accueil qui présente les prochains matchs
+- `/sport/[sport]` Les prochains matchs triés par sport
 - `/sport/[sport]/[competitions]` Les prochains matchs triés par sport et compétitions
 - `/user/login` La page de connexion
 - `/user/signup` La page d'inscription
 - `/user/bets` La liste de spari de l'uitlisateurs (Accessible uniquement en étant connecté)
 - `/user/logout` Deconnexion de l'utilisateur
 
-## technologies
+## Les routes de l'api publique de foot
 
-L'applciation web est développé en PHP, javascript et css sans aucun frameworks ou librairies quelconques.
+
+
+## Technologies
+
+L'application web est développé en PHP, javascript et css sans aucun frameworks ou librairies quelconques.
 
 ## Architecture du projet
 
