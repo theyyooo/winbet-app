@@ -19,7 +19,13 @@ class Singleton extends EnvReader
         $this->dbName = $this->getValue("DATABASE_DBNAME");
         $this->username = $this->getValue("DATABASE_USERNAME");
         $this->password = $this->getValue("DATABASE_PASSWORD");
-        $this->cnx = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->username, $this->password);
+        try{
+            $this->cnx = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->username, $this->password);
+        }catch(Exception $e){
+            echo "erreur de base de données";
+            die;
+        }
+        
     }
 
     /**
