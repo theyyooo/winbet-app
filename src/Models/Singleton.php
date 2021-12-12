@@ -23,6 +23,7 @@ class Singleton extends EnvReader
             $this->cnx = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->username, $this->password);
         }catch(Exception $e){
             echo "erreur de base de données";
+            echo $e->getMessage();
             die;
         }
         
